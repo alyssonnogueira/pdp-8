@@ -108,6 +108,7 @@ build/Debug/GNU-Linux/main.o: main.cpp /usr/include/gtk-2.0/gtk/gtk.h \
  /usr/include/glib-2.0/gio/gconverterinputstream.h \
  /usr/include/glib-2.0/gio/gconverteroutputstream.h \
  /usr/include/glib-2.0/gio/gcredentials.h \
+ /usr/include/glib-2.0/gio/gdatagrambased.h \
  /usr/include/glib-2.0/gio/gdatainputstream.h \
  /usr/include/glib-2.0/gio/gdataoutputstream.h \
  /usr/include/glib-2.0/gio/gdbusaddress.h \
@@ -123,6 +124,9 @@ build/Debug/GNU-Linux/main.o: main.cpp /usr/include/gtk-2.0/gtk/gtk.h \
  /usr/include/glib-2.0/gio/gdbusserver.h \
  /usr/include/glib-2.0/gio/gdbusutils.h \
  /usr/include/glib-2.0/gio/gdrive.h \
+ /usr/include/glib-2.0/gio/gdtlsclientconnection.h \
+ /usr/include/glib-2.0/gio/gdtlsconnection.h \
+ /usr/include/glib-2.0/gio/gdtlsserverconnection.h \
  /usr/include/glib-2.0/gio/gemblemedicon.h \
  /usr/include/glib-2.0/gio/gicon.h /usr/include/glib-2.0/gio/gemblem.h \
  /usr/include/glib-2.0/gio/gfileattribute.h \
@@ -758,6 +762,8 @@ build/Debug/GNU-Linux/main.o: main.cpp /usr/include/gtk-2.0/gtk/gtk.h \
 
 /usr/include/glib-2.0/gio/gcredentials.h:
 
+/usr/include/glib-2.0/gio/gdatagrambased.h:
+
 /usr/include/glib-2.0/gio/gdatainputstream.h:
 
 /usr/include/glib-2.0/gio/gdataoutputstream.h:
@@ -787,6 +793,12 @@ build/Debug/GNU-Linux/main.o: main.cpp /usr/include/gtk-2.0/gtk/gtk.h \
 /usr/include/glib-2.0/gio/gdbusutils.h:
 
 /usr/include/glib-2.0/gio/gdrive.h:
+
+/usr/include/glib-2.0/gio/gdtlsclientconnection.h:
+
+/usr/include/glib-2.0/gio/gdtlsconnection.h:
+
+/usr/include/glib-2.0/gio/gdtlsserverconnection.h:
 
 /usr/include/glib-2.0/gio/gemblemedicon.h:
 

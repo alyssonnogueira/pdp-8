@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     // Janela 
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_container_set_border_width(GTK_CONTAINER(win), 20);
-    gtk_window_set_title(GTK_WINDOW(win), "8 PUZZLE");
+    gtk_window_set_title(GTK_WINDOW(win), "HIPO");
     gtk_window_set_position(GTK_WINDOW(win), GTK_WIN_POS_CENTER);
     gtk_widget_realize(win);
     g_signal_connect(win, "destroy", gtk_main_quit, NULL);
@@ -89,10 +89,41 @@ int main(int argc, char *argv[]) {
     gtk_table_attach_defaults(GTK_TABLE(table0), labels, 0, 2, 3, 4);
     //estados_solucao = gtk_label_new(" 0 ");
     //gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
+    int length;
     
-    labels = gtk_label_new("Instruções do Hipo\n Acc = Acumulador\n EE = Endereço de 2 digitos\n");
+    ifstream fp;
+    fp.open("teste.txt", ios::in);
+    length = fp.tellg();
+    //fp.seekg(0, ios::beq);
+    
+    if (!fp.is_open()){
+     		cout << "Não foi possível abrir o arquivo!" << endl;
+     	}
+    else {
+       
+        cout << "Foi\n " << endl;
+    }
+     char ch;
+     string retorno;
+     while(fp.get(ch)){
+         retorno +=ch;
+//        /fp.put(ch);
+    }
+     char teste[retorno.length()];
+     cout << retorno << retorno.length() << endl;
+     for (int i = 0; i < retorno.length(); i++){
+        teste[i] = retorno[i];
+     }
+    /*
+  	if(!lexico.lerEntrada(&entrada)){ // Le o arquivo de entrada
+  		cout << "Não foi possivel ler o arquivo! " << endl;
+  	}*/
+    
+    labels = gtk_label_new("Instruções do Hipo\n");
     gtk_table_attach_defaults(GTK_TABLE(table1), labels, 0, 2, 3, 4);
-   // estados_solucao = gtk_label_new(" 0 ");
+    //sprintf(teste, "%s", teste);
+    gtk_label_set_text(GTK_LABEL(labels), teste);
+   // estados_solucao = gtk_label_new(" 0 ");"Instruções do Hipo\n Acc = Acumulador\n EE = Endereço de 2 digitos\n"
    // gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
 
     // Enter the main loop 

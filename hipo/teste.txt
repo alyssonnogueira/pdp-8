@@ -1,0 +1,21 @@
+Acc = Acumulador 	[Acc] = Conteudo do Acc
+EE = Endereco de 2 digitos	[EE] = Conteudo de EE
+11 - LDA: Ac recebe[EE].
+12 - STA: EE recebe [Acc].
+21 - ADD: Ac recebe [Ac] + [EE].
+22 - SUB: Ac recebe [Ac] - [EE].
+23 - MUL: Ac recebe [Ac] x [EE].
+24 - DIV: Ac recebe [Ac] : [EE].
+25 - REM: Ac recebe o resto de [Ac] : [EE].
+29 - REV: Ac recebe -[Ac].
+31 - INN: EE recebe entrada.
+41 - PRN: Imprime [EE].
+50 - NOP: Nenhuma operacao e efetuada.
+51 - JMP: Desvia para EE.
+52 - JLE: Se [Acc] <= 0, desvia para EE.
+53 - JDZ: Se [Acc] for diferente de 0, desvia para EE.
+54 - JGT: Se [Acc] > 0, desvia para EE.
+55 - JEQ: Se [Acc] = 0, desvia para EE.
+56 - JLT: Se [Acc] < 0, desvia para EE.
+57 - JGE: Se [Acc] >= 0, desvia para EE.
+70 - STP: Pare a execucao.
