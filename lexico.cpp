@@ -26,7 +26,10 @@ int main(){
   		cout << "Não foi possivel ler o arquivo! " << endl;
   	}
 
-  	lexico.imprimeLista();
+  	//lexico.imprimeLista();
+  	lexico.identificaToken();
+
+
 
   	entrada.close();
 
