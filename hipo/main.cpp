@@ -28,6 +28,7 @@ GtkWidget *pos0, *pos1, *pos2, *pos3, *pos4, *pos5, *pos6, *pos7, *pos8;
 GtkWidget *resolver_puzzle, *gerar_puzzle, *jogar_8puzzle;
 
 //Por aqui o Programa começa
+
 int main(int argc, char *argv[]) {
 
     // Inicializa GTK+ 
@@ -46,10 +47,10 @@ int main(int argc, char *argv[]) {
     //Box Vertical
     vbox = gtk_vbox_new(FALSE, 10);
     gtk_container_add(GTK_CONTAINER(win), vbox);
-    
+
     frame2 = gtk_frame_new("Menu");
     gtk_box_pack_start(GTK_BOX(vbox), frame2, TRUE, TRUE, 0);
-    
+
     // Box Horizontal
     hbox = gtk_hbox_new(FALSE, 10);
     gtk_container_add(GTK_CONTAINER(vbox), hbox);
@@ -60,7 +61,7 @@ int main(int argc, char *argv[]) {
 
     frame1 = gtk_frame_new("Instruções do Hipo");
     gtk_box_pack_start(GTK_BOX(hbox), frame1, TRUE, TRUE, 0);
-    
+
     //Tables
     table0 = gtk_table_new(3, 3, FALSE);
     gtk_container_add(GTK_CONTAINER(frame0), table0);
@@ -79,7 +80,7 @@ int main(int argc, char *argv[]) {
     g_signal_connect(G_OBJECT(gerar_puzzle), "clicked", G_CALLBACK(NULL), (gpointer) win);
     gtk_widget_set_size_request(gerar_puzzle, 170, 30);
     gtk_table_attach_defaults(GTK_TABLE(table2), gerar_puzzle, 3, 6, 0, 1);
-    
+
     labels = gtk_label_new("Posição");
     gtk_table_attach_defaults(GTK_TABLE(table0), labels, 0, 2, 2, 3);
     //estados_testados = gtk_label_new(" 0 ");
@@ -90,41 +91,36 @@ int main(int argc, char *argv[]) {
     //estados_solucao = gtk_label_new(" 0 ");
     //gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
     int length;
-    
+
     ifstream fp;
-    fp.open("teste.txt", ios::in);
+    char ch;
+    string retorno;
+    fp.open("inst_hipo.txt", ios::in);
     length = fp.tellg();
     //fp.seekg(0, ios::beq);
-    
-    if (!fp.is_open()){
-     		cout << "Não foi possível abrir o arquivo!" << endl;
-     	}
-    else {
-       
-        cout << "Foi\n " << endl;
+
+    if (!fp.is_open()) {
+        cout << "Não foi possível abrir o arquivo!" << endl;
+    } else {
+        
+        while (fp.get(ch)) {
+            retorno += ch;
+            //        /fp.put(ch);
+        }
+        
     }
-     char ch;
-     string retorno;
-     while(fp.get(ch)){
-         retorno +=ch;
-//        /fp.put(ch);
-    }
-     char teste[retorno.length()];
-     cout << retorno << retorno.length() << endl;
-     for (int i = 0; i < retorno.length(); i++){
-        teste[i] = retorno[i];
-     }
-    /*
-  	if(!lexico.lerEntrada(&entrada)){ // Le o arquivo de entrada
-  		cout << "Não foi possivel ler o arquivo! " << endl;
-  	}*/
-    
+    char instr_hipo[retorno.length()];
+        //cout << retorno << retorno.length() << endl;
+        for (int i = 0; i < retorno.length(); i++) {
+            instr_hipo[i] = retorno[i];
+        }
+
     labels = gtk_label_new("Instruções do Hipo\n");
     gtk_table_attach_defaults(GTK_TABLE(table1), labels, 0, 2, 3, 4);
     //sprintf(teste, "%s", teste);
-    gtk_label_set_text(GTK_LABEL(labels), teste);
-   // estados_solucao = gtk_label_new(" 0 ");"Instruções do Hipo\n Acc = Acumulador\n EE = Endereço de 2 digitos\n"
-   // gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
+    gtk_label_set_text(GTK_LABEL(labels), instr_hipo);
+    // estados_solucao = gtk_label_new(" 0 ");"Instruções do Hipo\n Acc = Acumulador\n EE = Endereço de 2 digitos\n"
+    // gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
 
     // Enter the main loop 
     gtk_widget_show_all(win);
