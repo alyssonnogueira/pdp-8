@@ -1,0 +1,231 @@
+#include <cstdlib>
+#include <stdlib.h>
+#include <gtk/gtk.h>
+
+using namespace std;
+
+static void helloWorld (GtkWidget *wid, GtkWidget *win)
+{
+  GtkWidget *dialog = NULL;
+
+  dialog = gtk_message_dialog_new (GTK_WINDOW (win), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Aqui o 8 Puzzle será iniciado");
+  gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
+  gtk_dialog_run (GTK_DIALOG (dialog));
+  gtk_widget_destroy (dialog);
+}
+
+int main (int argc, char *argv[])
+{
+  GtkWidget *button = NULL;
+  GtkWidget *win = NULL;
+  GtkWidget *vbox = NULL;
+  GtkWidget *grid = NULL;
+  /* Initialize GTK+ */
+  g_log_set_handler ("Gtk", G_LOG_LEVEL_WARNING, (GLogFunc) gtk_false, NULL);
+  gtk_init (&argc, &argv);
+  g_log_set_handler ("Gtk", G_LOG_LEVEL_WARNING, g_log_default_handler, NULL);
+
+  /* Create the main window */
+  win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_set_border_width (GTK_CONTAINER (win), 200);
+  gtk_window_set_title (GTK_WINDOW (win), "8 PUZZLE");
+  gtk_window_set_position (GTK_WINDOW (win), GTK_WIN_POS_CENTER);
+  gtk_widget_realize (win);
+  g_signal_connect (win, "destroy", gtk_main_quit, NULL);
+  
+  
+  
+ /*  Create a vertical box with buttons */ 
+  vbox = gtk_vbox_new (TRUE, 10);
+  gtk_container_add (GTK_CONTAINER (win), vbox);
+  
+  
+  button = gtk_button_new_from_stock ("Iniciar 8Puzzle");
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (helloWorld), (gpointer) win);
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+
+  button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
+  g_signal_connect (button, "clicked", gtk_main_quit, NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  
+  /*8 Puzzle*/
+  grid = gtk_hbox_new (TRUE, 20);
+  gtk_box_pack_start (GTK_BOX (vbox), grid, TRUE, TRUE, 0);
+   //gtk_container_add (GTK_CONTAINER (win), grid);
+  
+  for (int i =0; i < 9; i++){
+  button = gtk_button_new_with_label("Clique aqui %d", i);//gtk_button_new_from_stock ("Teste" + i);
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (helloWorld), (gpointer) win);
+  gtk_box_pack_start (GTK_BOX (grid), button, TRUE, TRUE, 0);
+  }
+
+  /* Enter the main loop */
+  gtk_widget_show_all (win);
+  gtk_main ();
+  return 0;
+}
+
+
+ 
+ * File:   main.cpp
+ * Author: alysson
+ *
+ * Created on 10 de Setembro de 2015, 11:41
+ */
+
+
+#include <cstdlib>
+#include <stdlib.h>
+#include <gtk/gtk.h>
+
+using namespace std;
+
+GtkWidget *entrada;
+GtkWidget *label_saida;
+  
+static void Iniciar (GtkWidget *wid, GtkWidget *win)
+{
+  GtkWidget *dialog = NULL;
+ 
+  
+ double celsius;
+  double fahrenheit;
+  char texto[128];
+
+  celsius=atol(gtk_entry_get_text(GTK_ENTRY(entrada)));
+
+  fahrenheit=celsius*1.8+32;
+  sprintf(texto, "%.1f ºC = %.1f ºF", celsius, fahrenheit);
+  gtk_label_set_text(GTK_LABEL(label_saida), texto);
+
+
+  dialog = gtk_message_dialog_new (GTK_WINDOW (win), GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE, "Aqui o 8 Puzzle será iniciado");
+  gtk_window_set_position (GTK_WINDOW (dialog), GTK_WIN_POS_CENTER);
+  gtk_dialog_run (GTK_DIALOG (dialog));
+  gtk_widget_destroy (dialog);
+}
+
+int main (int argc, char *argv[])
+{
+  GtkWidget *button = NULL;
+  GtkWidget *win = NULL;
+  GtkWidget *vbox = NULL;
+  GtkWidget *grid = NULL;
+  GtkWidget *entrada1,*entrada2,*entrada3,*entrada4,*entrada5,*entrada6,*entrada7,*entrada8,*entrada9;
+  GtkWidget *label_saida;
+
+
+  /* Initialize GTK+ */
+  g_log_set_handler ("Gtk", G_LOG_LEVEL_WARNING, (GLogFunc) gtk_false, NULL);
+  gtk_init (&argc, &argv);
+  g_log_set_handler ("Gtk", G_LOG_LEVEL_WARNING, g_log_default_handler, NULL);
+
+  /* Create the main window */
+  win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_container_set_border_width (GTK_CONTAINER (win), 200);
+  gtk_window_set_title (GTK_WINDOW (win), "8 PUZZLE");
+  gtk_window_set_position (GTK_WINDOW (win), GTK_WIN_POS_CENTER);
+  gtk_widget_realize (win);
+  g_signal_connect (win, "destroy", gtk_main_quit, NULL);
+  
+  
+  
+ /*  Tabela com todo o conteudo */ 
+  vbox = gtk_table_new(9, 9, FALSE);
+  gtk_container_add (GTK_CONTAINER (win), vbox);
+ 
+  //Botão Para inciar
+  button = gtk_button_new_from_stock ("Iniciar 8Puzzle");
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (Iniciar), (gpointer) win);
+  //gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  gtk_widget_set_size_request(button, 50, 50);
+  gtk_table_attach_defaults(GTK_TABLE (vbox), button, 6, 8, 0, 1);
+  
+  //Estados testados
+  label_saida=gtk_label_new(" Número de Estados Testados: ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 6, 7, 1, 2);
+  label_saida=gtk_label_new(" 0 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 7, 8, 1, 2);
+/*  
+   entrada=gtk_entry_new();
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada, 7, 8, 1, 2);
+  */
+   //Estados p/ Solução
+  label_saida=gtk_label_new(" Número de Estados para a Solução: ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 6, 7, 2, 3);
+  label_saida=gtk_label_new(" 0 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 7, 8, 2, 3);
+
+  //teste
+ // botao=gtk_button_new_with_label("Converter para ºF");
+ // gtk_box_pack_start(GTK_BOX(conteudo), botao, FALSE, FALSE, 0);
+
+  //8 PUZZLE INICIAL
+   entrada1=gtk_entry_new();//label_saida=gtk_label_new(" 1 ");
+   gtk_widget_set_size_request(entrada1, 50, 50);
+   gtk_entry_set_text(GTK_ENTRY(entrada1), "1");   
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada1, 0, 1, 0, 1);
+   entrada2=gtk_entry_new();//label_saida=gtk_label_new(" 2 ");
+   gtk_widget_set_size_request(entrada2, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada2, 1, 2, 0, 1);
+   entrada3=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada3, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada3, 2, 3, 0, 1);
+   entrada4=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada4, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada4, 0, 1, 1, 2);
+   entrada5=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada5, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada5, 1, 2, 1, 2);
+   entrada6=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada6, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada6, 2, 3, 1, 2);
+   entrada7=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada7, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada7, 0, 1, 2, 3);
+   entrada8=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada8, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada8, 1, 2, 2, 3);
+   entrada9=gtk_entry_new();//label_saida=gtk_label_new(" 3 ");
+   gtk_widget_set_size_request(entrada9, 50, 50);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), entrada9, 2, 3, 2, 3);
+      
+   
+   label_saida=gtk_label_new(" ESTADO INICIAL ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 1, 2, 3, 4);
+
+//8 PUZZLE FINAL
+   GtkEventBox *evento;
+   evento = new GtkEventBox();
+   label_saida=gtk_label_new(" 1 ");
+   //label_saida->gtk_set_alignment(1, 1);
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 3, 4, 0, 1);
+   label_saida=gtk_label_new(" 2 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 4, 5, 0, 1);
+   label_saida=gtk_label_new(" 3 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 5, 6, 0, 1);
+   label_saida=gtk_label_new(" 4 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 3, 4, 1, 2);
+   label_saida=gtk_label_new(" 5 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 4, 5, 1, 2);
+   label_saida=gtk_label_new(" 6 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 5, 6, 1, 2);
+  label_saida=gtk_label_new(" 7 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 3, 4, 2, 3);
+   label_saida=gtk_label_new(" 8 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 4, 5, 2, 3);
+   label_saida=gtk_label_new(" 0 ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 5, 6, 2, 3);
+   label_saida=gtk_label_new(" ESTADO META ");
+   gtk_table_attach_defaults(GTK_TABLE (vbox), label_saida, 4, 5, 3, 4);
+    
+
+//  gtk_box_pack_start(GTK_BOX(conteudo), label_saida, FALSE, FALSE, 0);
+
+  /* Enter the main loop */
+  gtk_widget_show_all (win);
+  gtk_main ();
+  return 0;
+}
+
+
