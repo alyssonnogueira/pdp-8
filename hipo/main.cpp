@@ -23,9 +23,7 @@ GtkWidget *hbox, *vbox;
 GtkWidget *frame0, *frame1, *frame2;
 GtkWidget *table0, *table1, *table2;
 GtkWidget *labels, *estados_testados, *estados_solucao;
-GtkWidget *entrada0, *entrada1, *entrada2, *entrada3, *entrada4, *entrada5, *entrada6, *entrada7, *entrada8;
-GtkWidget *pos0, *pos1, *pos2, *pos3, *pos4, *pos5, *pos6, *pos7, *pos8;
-GtkWidget *resolver_puzzle, *gerar_puzzle, *jogar_8puzzle;
+GtkWidget *execute, *open_prog;
 
 //Por aqui o Programa começa
 
@@ -63,7 +61,7 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(hbox), frame1, TRUE, TRUE, 0);
 
     //Tables
-    table0 = gtk_table_new(3, 3, FALSE);
+    table0 = gtk_table_new(0, 0, FALSE);
     gtk_container_add(GTK_CONTAINER(frame0), table0);
     table1 = gtk_table_new(3, 3, FALSE);
     gtk_container_add(GTK_CONTAINER(frame1), table1);
@@ -71,23 +69,28 @@ int main(int argc, char *argv[]) {
     gtk_container_add(GTK_CONTAINER(frame2), table2);
 
     //Menu
-    jogar_8puzzle = gtk_button_new_from_stock("Abrir Programa");
-    g_signal_connect(G_OBJECT(jogar_8puzzle), "clicked", G_CALLBACK(NULL), (gpointer) win);
-    gtk_widget_set_size_request(jogar_8puzzle, 170, 30);
-    gtk_table_attach_defaults(GTK_TABLE(table2), jogar_8puzzle, 0, 3, 0, 1);
+    open_prog = gtk_button_new_from_stock("Abrir Programa");
+    g_signal_connect(G_OBJECT(open_prog), "clicked", G_CALLBACK(NULL), (gpointer) win);
+    gtk_widget_set_size_request(open_prog, 170, 30);
+    gtk_table_attach_defaults(GTK_TABLE(table2), open_prog, 0, 3, 0, 1);
 
-    gerar_puzzle = gtk_button_new_from_stock("Executar Programa");
-    g_signal_connect(G_OBJECT(gerar_puzzle), "clicked", G_CALLBACK(NULL), (gpointer) win);
-    gtk_widget_set_size_request(gerar_puzzle, 170, 30);
-    gtk_table_attach_defaults(GTK_TABLE(table2), gerar_puzzle, 3, 6, 0, 1);
+    execute = gtk_button_new_from_stock("Executar Programa");
+    g_signal_connect(G_OBJECT(execute), "clicked", G_CALLBACK(NULL), (gpointer) win);
+    gtk_widget_set_size_request(execute, 170, 30);
+    gtk_table_attach_defaults(GTK_TABLE(table2), execute, 3, 6, 0, 1);
 
-    labels = gtk_label_new("Posição");
-    gtk_table_attach_defaults(GTK_TABLE(table0), labels, 0, 2, 2, 3);
-    //estados_testados = gtk_label_new(" 0 ");
-    //gtk_table_attach_defaults(GTK_TABLE(table0), estados_testados, 2, 3, 2, 3);
+    labels = gtk_label_new(" Posição ");
+    gtk_table_attach_defaults(GTK_TABLE(table0), labels, 0, 2, 0, 1);
+  
+    labels = gtk_label_new(" Valor ");
+    gtk_table_attach_defaults(GTK_TABLE(table0), labels, 3, 5, 0, 1);
 
-    labels = gtk_label_new("Valor");
-    gtk_table_attach_defaults(GTK_TABLE(table0), labels, 0, 2, 3, 4);
+    labels = gtk_label_new(" Comentários ");
+    gtk_table_attach_defaults(GTK_TABLE(table0), labels, 6, 8, 0, 1);
+
+    for (int i = 0; i < 10; i++) {
+
+    }
     //estados_solucao = gtk_label_new(" 0 ");
     //gtk_table_attach_defaults(GTK_TABLE(table0), estados_solucao, 2, 3, 3, 4);
     int length;
@@ -102,18 +105,18 @@ int main(int argc, char *argv[]) {
     if (!fp.is_open()) {
         cout << "Não foi possível abrir o arquivo!" << endl;
     } else {
-        
+
         while (fp.get(ch)) {
             retorno += ch;
             //        /fp.put(ch);
         }
-        
+
     }
     char instr_hipo[retorno.length()];
-        //cout << retorno << retorno.length() << endl;
-        for (int i = 0; i < retorno.length(); i++) {
-            instr_hipo[i] = retorno[i];
-        }
+    //cout << retorno << retorno.length() << endl;
+    for (int i = 0; i < retorno.length(); i++) {
+        instr_hipo[i] = retorno[i];
+    }
 
     labels = gtk_label_new("Instruções do Hipo\n");
     gtk_table_attach_defaults(GTK_TABLE(table1), labels, 0, 2, 3, 4);
