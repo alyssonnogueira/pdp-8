@@ -1,0 +1,14 @@
+100;5
+1;+1130;Carrega +0000 no Acumulador
+2;+1240;Define a posicao 40 como +0000
+3;+3145;Lê um numero e salva em
+4;+4145;Imprime o numero lido
+5;+1145;Coloca o numero lido no Acumulador
+6;+5611;Se numero < 0 vai para 11
+7;+1140;Carrega [40] no Acumulador
+8;+2145;Soma [45] ao acumulador
+9;+1240;[40] recebe [Ac]
+10;+5103;Le o proximo numero
+11;+4140;Imprime a Soma
+12;+7000;Para a execucao
+30;+0000;Usado para definir Ac como +0000
