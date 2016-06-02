@@ -6,6 +6,7 @@
 
 // Inclui o Header da classe lexico.h
 #include "lexico.hpp"
+#include "interpretador.hpp"
 
 using namespace std;
 
