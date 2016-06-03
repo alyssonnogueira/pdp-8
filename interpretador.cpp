@@ -57,6 +57,7 @@ void Interpretador::processaCodigo(vector < vector<int> > listaComandos){
     int i;// i simboliza o indereço de memoria
 
     for(i=0;i<listaComandos.size();i++){
+        cout << "LINHA: "<< i << " ";
         cout << listaComandos[i][0]<<" ";
         cout << listaComandos[i][1];
 
@@ -109,29 +110,30 @@ void Interpretador::processaCodigo(vector < vector<int> > listaComandos){
             //COMANDO VAZIO, APENAS PASSA PARA O PROXIMO
         }
         if(listaComandos[i][0] == 51){//JMP
-            i = listaComandos[i][1]-2; //I  nesse caso está representando o indice no vetor de inteiros, que é o codigo
+            i = listaComandos[i][1]-1; //I  nesse caso está representando o indice no vetor de inteiros, que é o codigo
+            cout << "JUMP " << i << endl;
         }
         if(listaComandos[i][0] == 52){//JLE
             if (ACC<=0)
-                i = listaComandos[i][1]-2;
+                i = listaComandos[i][1]-1;
         }
         if(listaComandos[i][0] == 53){//JDZ
             if (ACC!=0)
-                i = listaComandos[i][1]-2;
+                i = listaComandos[i][1]-1;
         }
        	if(listaComandos[i][0] == 54){//JGT
           	if (ACC>0)
-              	i = listaComandos[i][1]-2;
+              	i = listaComandos[i][1]-1;
         }
         if(listaComandos[i][0] == 55){//JEQ
            	if(ACC == 0)
-           	    i = listaComandos[i][1]-2;
+           	    i = listaComandos[i][1]-1;
         }
         if(listaComandos[i][0] == 56){//JLT
 	       	if (ACC < 0){
       	   		/*for(int k = i; k < listaComandos.size(); k++)
                		if(listaComandos[k] == 41)*/
-                		i = listaComandos[i][1] - 2;
+                		i = listaComandos[i][1] - 1;
            	    	//cout << i << endl;
            	}
            	else{
@@ -139,7 +141,7 @@ void Interpretador::processaCodigo(vector < vector<int> > listaComandos){
         }
         if(listaComandos[i][0] == 57){//JGE
            	if (ACC >= 0)
-           	    i = listaComandos[i][1] - 2;
+           	    i = listaComandos[i][1] - 1;
         }
         if(listaComandos[i][0] == 70){//
            	cout << endl;

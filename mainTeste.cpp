@@ -66,7 +66,7 @@ int main(){
         cout << interpretador[i][1] << endl;
     }
     cout << endl;
-    // ========================================
+    // ========================================g
 
     processador.processaCodigo(interpretador);
 

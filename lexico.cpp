@@ -41,7 +41,7 @@ void Lexico::pop(){ // remove a primeira string da lista
 string Lexico::top(){ // retorna o valor no topo da lista
   return lista.front();
 }
-    
+
 void Lexico::imprimeLista(){ // imprime a lista
   for ( ptr = lista.begin(); ptr != lista.end(); ptr++ )
     cout << *ptr << endl;
@@ -49,7 +49,7 @@ void Lexico::imprimeLista(){ // imprime a lista
 
 int Lexico::stringToInt(string str){ // onde a mágica acontece
   int retorno;
-  retorno = (str[0] - 0) % 48;    
+  retorno = (str[0] - 0) % 48;
   if(str[1] >= '0' && str[1] <= '9')
     for(int i = 1; i < str.size(); i++){
       retorno *= 10;
@@ -61,14 +61,15 @@ int Lexico::stringToInt(string str){ // onde a mágica acontece
 vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretadorVector){//   função de identifica os token presentes na lista
 
   string comando,instr,ender;
-  int i = 0, inteiro;
+  int i = 0, inteiro, linha;
 
   // Remove os dois primeiros elementos que são o numero de linhas e a linha que começa a execução
   pop();
-  pop(); 
-  
+  pop();
+
   while(!(lista.empty())){
-  
+
+    linha=stringToInt(top());
     pop();
 
     comando = top();    //copia o conteudo da lista para a variavel
@@ -77,7 +78,7 @@ vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretado
     instr = comando[1]; //serpara o conteudo, para realizar o teste e descobrir o comando
     instr += comando[2];//serpara o conteudo, para realizar o teste e descobrir o comando
     inteiro = stringToInt(instr);
-    interpretadorVector[i][0] = inteiro;
+    interpretadorVector[linha][0] = inteiro;
     cout << inteiro << " ";
     // =================
 
@@ -85,13 +86,13 @@ vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretado
     ender = comando[3]; //separa o conteudo, para receber o endereço
     ender += comando[4];
     inteiro = stringToInt(ender);
-    interpretadorVector[i][1] = inteiro;
+    interpretadorVector[linha][1] = inteiro;
     cout << inteiro << " " << endl;
     //==================
-    i++;
+    //i++;
     // Remove comentario
     pop();
-    pop();
+    pop();//Descarta o comentário
 
   }
   return interpretadorVector;
