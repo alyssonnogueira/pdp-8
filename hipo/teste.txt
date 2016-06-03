@@ -1,21 +1,14 @@
-Acc = Acumulador 	[Acc] = Conteudo do Acc
-EE = Endereco de 2 digitos	[EE] = Conteudo de EE
-11 - LDA: Ac recebe[EE].
-12 - STA: EE recebe [Acc].
-21 - ADD: Ac recebe [Ac] + [EE].
-22 - SUB: Ac recebe [Ac] - [EE].
-23 - MUL: Ac recebe [Ac] x [EE].
-24 - DIV: Ac recebe [Ac] : [EE].
-25 - REM: Ac recebe o resto de [Ac] : [EE].
-29 - REV: Ac recebe -[Ac].
-31 - INN: EE recebe entrada.
-41 - PRN: Imprime [EE].
-50 - NOP: Nenhuma operacao e efetuada.
-51 - JMP: Desvia para EE.
-52 - JLE: Se [Acc] <= 0, desvia para EE.
-53 - JDZ: Se [Acc] for diferente de 0, desvia para EE.
-54 - JGT: Se [Acc] > 0, desvia para EE.
-55 - JEQ: Se [Acc] = 0, desvia para EE.
-56 - JLT: Se [Acc] < 0, desvia para EE.
-57 - JGE: Se [Acc] >= 0, desvia para EE.
-70 - STP: Pare a execucao.
+100;5
+1;+1130;Carrega +0000 no Acumulador
+2;+1240;Define a posicao 40 como +0000
+3;+3145;Lê um numero e salva em
+4;+4145;Imprime o numero lido
+5;+1145;Coloca o numero lido no Acumulador
+6;+5611;Se numero < 0 vai para 11
+7;+1140;Carrega [40] no Acumulador
+8;+2145;Soma [45] ao acumulador
+9;+1240;[40] recebe [Ac]
+10;+5103;Le o proximo numero
+11;+4140;Imprime a Soma
+12;+7000;Para a execucao
+30;+0000;Usado para definir Ac como +0000
