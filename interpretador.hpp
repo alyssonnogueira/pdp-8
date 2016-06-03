@@ -1,5 +1,5 @@
 
-//#ifndef INTERPRETADOR_HPP
+#ifndef INTERPRETADOR_HPP
 #define INTERPRETADOR_HPP
 
 #include <iostream>
@@ -18,43 +18,100 @@ class Interpretador{
 		Interpretador(){ // Construtor default da classe
 		}
 
-    vector<int> symbolTable;
+
+    int symbolTable[100];
     int ACC;
 
-    void processaCodigo(vector<int> listaComandos){
 
+    int findStop(vector<int> listaComandos){
+
+        // cout << "STOP > ";
+
+        int i;
+        for(i=0;i<listaComandos.size();i++){
+            if (listaComandos[i]==70){
+               // cout << i << endl;
+                return i;
+            }
+        }
+    }
+
+    void iniciaTabela(){
+        int i;
+        for(i=0;i<100;i++){
+            symbolTable[i]=0;
+        }
+    }
+
+    void constroiTabela (vector<int> listaComandos){
+            int stopPosition = findStop(listaComandos);
+            iniciaTabela();
+    int i;
+            for(i=0;i<listaComandos.size();i++){// PULA DE 2 EM 2, IDENTIFICANDO OS ENDEREÇOS DAS OPERAÇOES
+                if(listaComandos[i]!=11||12||21||22||23||24||25||29||31||41||50||51||52||53||54||55||56||57||70){//TESTANDO POSIÇÃO POR POSIÇÃO, ELE VERIFICA SE NÃO É UM COMANDO
+                     if (listaComandos[i]>stopPosition){//SE MAIOR QUE A POSIÇÃO DO STOP, SIGNIFICA QUE ESTOU ME REFERENCIANDO A TABELA
+                         symbolTable[listaComandos[i]]=0;
+                    }
+                }
+            }
+    }
+
+    void processaCodigo(vector<int> listaComandos){
+      ACC=0;
+    int stopPosition = findStop(listaComandos);
+    constroiTabela(listaComandos);
     int i;// i simboliza o indereço de memoria
         for(i=0;i<listaComandos.size();i++){
+                getchar();
+                cout << listaComandos[i]<<" ";
+                cout << listaComandos[i+1];
+                cout << " ACC: " << ACC << endl;
                     if(listaComandos[i] == 11){ //LDA
-                        ACC = symbolTable[listaComandos[i+1]];
+                        i++;
+                        ACC = symbolTable[listaComandos[i]];
                     }
                     if(listaComandos[i] == 12){//STA
-                       symbolTable[listaComandos[i+1]]= ACC;
+                        i++;
+                       symbolTable[listaComandos[i]]= ACC;
 
                    }
                     if(listaComandos[i] == 21){//ADD
-                        ACC = ACC + symbolTable[listaComandos[i+1]];
+                            i++;
+                        ACC += symbolTable[listaComandos[i]];
                    }
                     if(listaComandos[i] == 22){//SUB
-                        ACC = ACC - symbolTable[listaComandos[i+1]];
+                            i++;
+                        ACC = ACC - symbolTable[listaComandos[i]];
                    }
                     if(listaComandos[i] == 23){//MULL
-                        ACC = ACC * symbolTable[listaComandos[i+1]];
+                            i++;
+                        ACC = ACC * symbolTable[listaComandos[i]];
                    }
                     if(listaComandos[i] == 24){//DIV
-                        ACC = ACC / symbolTable[listaComandos[i+1]];
+                            i++;
+                        ACC = ACC / symbolTable[listaComandos[i]];
                    }
                     if(listaComandos[i] == 25){//REM
-                        ACC = ACC%symbolTable[listaComandos[i+1]];
+                            i++;
+                        ACC = ACC%symbolTable[listaComandos[i]];
                    }
                     if(listaComandos[i] == 29){//REV
                         ACC = -ACC;
                    }
                     if(listaComandos[i] == 31){//INN
-                        cin >> symbolTable[listaComandos[i+1]];
+                        i++;
+                        cout << endl;
+                        cout <<"Digite um valor: ";
+                        cin >> symbolTable[listaComandos[i]];
+                        cout << endl;
+                        cout << "Tabela: " << symbolTable[listaComandos[i]] << endl;
+                        cout << endl;
                    }
                     if(listaComandos[i] == 41){//PRN
-                        cout << symbolTable[listaComandos[i+1]];
+                        i++;
+                        cout << endl;
+                        cout <<"Valor: ";
+                        cout << symbolTable[listaComandos[i]]<<endl;
                    }
                     if(listaComandos[i] == 50){//NOP
                         //COMANDO VAZIO, APENAS PASSA PARA O PROXIMO
@@ -79,25 +136,30 @@ class Interpretador{
                             i = listaComandos[i+1];
                    }
                     if(listaComandos[i] == 56){//JLT
-                        if (ACC < 0)
-                            i = listaComandos[i+1];
+                        if (ACC < 0){
+                            for(int k = i; k < listaComandos.size(); k++)
+                                if(listaComandos[k] == 41)
+                                  i = k - 1;
+                                cout << i << endl;
+                        }
+                        else{
+                          i++;
+                        }
                    }
                     if(listaComandos[i] == 57){//JGE
                         if (ACC >= 0)
                             i = listaComandos[i+1];
                    }
                     if(listaComandos[i] == 70){//
-                        cout << "FIM DE PROGRAMA";
+                        cout << endl;
+                        cout << "FIM DE PROGRAMA" << endl;
+                        cout << endl;
+                        return;
                    }
         }
     }
 
-    int findStop(vector<int> listaComandos){
-        int i;
-        for(i=0;i<listaComandos.size();i++){
-            if (listaComandos[i]==70)
-                return i;
-        }
-    }
+
 
 };
+#endif
