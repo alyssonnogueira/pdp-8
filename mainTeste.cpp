@@ -5,16 +5,34 @@
 #include <fstream>
 #include <vector>
 
-// Inclui o Header da classe lexico.h
+// Inclui a classe lexico
 #include "lexico.cpp"
-#include "interpretador.hpp"
+// Inclui a classe Interpretador
+//#include "interpretador.cpp"
 
 using namespace std;
 
 int main(){
-  Interpretador processador;  // Interpretador das instruções e endereços
+  //Interpretador processador;  // Interpretador das instruções e endereços
 	Lexico lexico; // Analisador lexico
-  vector<int> interpretador;  // Vector inteiro que armazena intruções e endereços como inteiros
+  vector <vector<int> > interpretador;  // Vector inteiro que armazena intruções e endereços como inteiros
+
+  interpretador.resize(100);
+  for (int i = 0; i < 100; ++i)
+    interpretador[i].resize(2);
+
+  /*interpretador[0][0] = 0;
+  interpretador[0][1] = 1;
+  interpretador[1][0] = 2;
+  interpretador[1][1] = 3;
+  interpretador[2][0] = 4;
+  interpretador[2][1] = 5;
+
+  for(int i = 0; i < 3 ; i++){
+      for(int k = 0; k < 2; k++)
+        cout << interpretador[i][k];
+      cout << endl;
+  }*/
 
 	// Cria ponteiro e abre o arquivo de entrada
 	ifstream entrada;
@@ -28,6 +46,7 @@ int main(){
   	if(!lexico.lerEntrada(&entrada)){ // Le o arquivo de entrada e adiciona ao analisador lexico os tokens separados
   		cout << "Não foi possivel ler o arquivo! " << endl;
   	}
+   
     
     // Impressão utilizada apenas para debug
     // ========================================
@@ -35,27 +54,23 @@ int main(){
   	lexico.imprimeLista();
     cout << endl;
   	// ========================================
-
-
-    lexico.identificaToken(&interpretador); // Adiciona as instruções e os endereços no vector de inteiros
+    
+    interpretador = lexico.identificaToken(interpretador); // Adiciona as instruções e os endereços no vector de inteiros
     
     
-    // Impressão utilizada apenas para debug
+    /// Impressão utilizada apenas para debug
     // ========================================
     cout << "SAIDA DO VECTOR COM INTRUCOES E ENDERECOS" << endl; 
     for(int i = 0; i < interpretador.size(); i++){
-      if(i % 2 == 1)
-          cout << interpretador[i] << endl;
-      else
-          cout << interpretador[i] << " "; 
+        cout << interpretador[i][0]<< " ";
+        cout << interpretador[i][1] << endl;
     }
     cout << endl;
     // ========================================
 
-
-    processador.processaCodigo(interpretador);
+    //processador.processaCodigo(interpretador);
 
   	entrada.close(); // Fecha o arquivo
-
+    
 	return 0;
 }

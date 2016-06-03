@@ -58,10 +58,10 @@ int Lexico::stringToInt(string str){ // onde a mágica acontece
   return retorno;
 }
 
-void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de identifica os token presentes na lista
+vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretadorVector){//   função de identifica os token presentes na lista
 
   string comando,instr,ender;
-  int i, inteiro;
+  int i = 0, inteiro;
 
   // Remove os dois primeiros elementos que são o numero de linhas e a linha que começa a execução
   pop();
@@ -77,19 +77,22 @@ void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de 
     instr = comando[1]; //serpara o conteudo, para realizar o teste e descobrir o comando
     instr += comando[2];//serpara o conteudo, para realizar o teste e descobrir o comando
     inteiro = stringToInt(instr);
-    interpretadorVector->push_back(inteiro);
+    interpretadorVector[i][0] = inteiro;
+    cout << inteiro << " ";
     // =================
 
     // Pega endereco de memoria
     ender = comando[3]; //separa o conteudo, para receber o endereço
     ender += comando[4];
     inteiro = stringToInt(ender);
-    interpretadorVector->push_back(inteiro);
+    interpretadorVector[i][1] = inteiro;
+    cout << inteiro << " " << endl;
     //==================
-
+    i++;
     // Remove comentario
     pop();
     pop();
 
   }
+  return interpretadorVector;
 }

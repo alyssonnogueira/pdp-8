@@ -29,7 +29,7 @@ class Lexico{
 
         int stringToInt(string str);// onde a mágica acontece
 
-        void identificaToken(vector<int> *interpretadorVector); //   função de identifica os token presentes na lista
+        vector <vector<int> > identificaToken(vector <vector<int> > interpretadorVector); //   função de identifica os token presentes na lista
 
 	protected:
 		list<string> lista;				// Cria a lista léxica
