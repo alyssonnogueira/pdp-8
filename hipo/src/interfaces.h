@@ -5,7 +5,7 @@
  */
 
 /*
- * File:   radiobuttons.hpp
+ * File:   interfaces.hpp
  * Author: alysson
  *
  * Created on 2 de Junho de 2016, 20:04
@@ -20,6 +20,7 @@
 #include <gtkmm/separator.h>
 #include <gtkmm.h>
 #include "lexico.h"
+#include "step.h"
 //#include <gtkmm/grid.h>
 
 
@@ -38,12 +39,12 @@ public:
     public:
 
       ModelColumns()
-      { add(m_col_id); add(m_col_name); add(m_col_number); add(m_col_percentage);}
+      { add(m_col_id); add(m_col_name); add(m_col_number); }
 
       Gtk::TreeModelColumn<Glib::ustring> m_col_id;
       Gtk::TreeModelColumn<Glib::ustring> m_col_name;
       Gtk::TreeModelColumn<Glib::ustring> m_col_number;
-      Gtk::TreeModelColumn<int> m_col_percentage;
+     // Gtk::TreeModelColumn<int> m_col_percentage;
     };
 
     ModelColumns m_Columns;

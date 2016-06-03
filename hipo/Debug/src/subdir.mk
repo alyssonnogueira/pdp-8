@@ -7,19 +7,22 @@ CPP_SRCS += \
 ../src/hipo.cpp \
 ../src/interfaces.cpp \
 ../src/interpretador.cpp \
-../src/lexico.cpp 
+../src/lexico.cpp \
+../src/step.cpp 
 
 OBJS += \
 ./src/hipo.o \
 ./src/interfaces.o \
 ./src/interpretador.o \
-./src/lexico.o 
+./src/lexico.o \
+./src/step.o 
 
 CPP_DEPS += \
 ./src/hipo.d \
 ./src/interfaces.d \
 ./src/interpretador.d \
-./src/lexico.d 
+./src/lexico.d \
+./src/step.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

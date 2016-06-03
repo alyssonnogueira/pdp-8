@@ -15,7 +15,7 @@
 
 using namespace std;
 
-Interfaces::Interfaces() :
+Step::Step() :
   mBox(Gtk::ORIENTATION_VERTICAL),
   mBoxTop(Gtk::ORIENTATION_HORIZONTAL),
   mBoxDown(Gtk::ORIENTATION_HORIZONTAL, 10),
@@ -25,6 +25,9 @@ Interfaces::Interfaces() :
   mButtonExecute("Executar Programa"),
   mButtonBox(Gtk::ORIENTATION_HORIZONTAL)
 {
+	GtkWidget* window;
+			  	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+			  	gtk_widget_show_all (window);
   // Set title and border of the window
   set_title("HIPO");
   set_border_width(1);
@@ -51,11 +54,11 @@ Interfaces::Interfaces() :
 
   mButtonBox.pack_start(mButtonChooser);
   mButtonChooser.signal_clicked().connect(sigc::mem_fun(*this,
-                &Interfaces::on_button_chooser_clicked) );
+                &Step::on_button_chooser_clicked) );
 
     mButtonBox.pack_start(mButtonExecute);
     mButtonExecute.signal_clicked().connect(sigc::mem_fun(*this,
-                &Interfaces::on_button_execute_clicked) );
+                &Step::on_button_execute_clicked) );
 
   mButtonChooser.set_can_default();
   mButtonChooser.grab_default();
@@ -102,19 +105,19 @@ Interfaces::Interfaces() :
     }
 
   // Show all children of the window
-  show_all_children();
+  show_all_children(this);
 }
 
-Interfaces::~Interfaces()
+Step::~Step()
 {
 }
 
-void Interfaces::on_button_clicked()
+void Step::on_button_clicked()
 {
   hide(); //to close the application.
 }
 
-void Interfaces::on_button_execute_clicked()
+void Step::on_button_execute_clicked()
 {
 	if (this->filename.length() == 0){
 		Gtk::MessageDialog dialog(*this, "OPA! Você não escolheu um Programa!");
@@ -137,7 +140,7 @@ void Interfaces::on_button_execute_clicked()
 		    }
 		    cout << endl;
 		  	entrada.close();
-		  	Step *step = new Step();
+		  	//Step *step = new Step();
 		  			  	/*GtkWidget* window;
 		  	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 		  	gtk_widget_show_all (window);
@@ -145,7 +148,7 @@ void Interfaces::on_button_execute_clicked()
 	}
 	}
 
-void Interfaces::on_button_chooser_clicked()
+void Step::on_button_chooser_clicked()
 {
   Gtk::FileChooserDialog dialog("Por favor selecione um programa hipo",
           Gtk::FILE_CHOOSER_ACTION_OPEN);
@@ -250,7 +253,7 @@ void Interfaces::on_button_chooser_clicked()
   }
 }
 
-void Interfaces::fill_buffer(){
+void Step::fill_buffer(){
 	m_refTextBuffer = Gtk::TextBuffer::create();
 	ifstream fp;
 	char ch;

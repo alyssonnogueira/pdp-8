@@ -1,5 +1,5 @@
-src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
- /usr/include/gtkmm-3.0/gtkmm/box.h \
+src/interfaces.d: ../src/interfaces.cpp \
+ /usr/include/gtkmm-3.0/gtkmm/messagedialog.h \
  /usr/include/glibmm-2.4/glibmm/ustring.h \
  /usr/lib/x86_64-linux-gnu/glibmm-2.4/include/glibmmconfig.h \
  /usr/include/glibmm-2.4/glibmm/unicode.h /usr/include/glib-2.0/glib.h \
@@ -99,12 +99,8 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/sigc++-2.0/sigc++/adaptors/lambda/operator.h \
  /usr/include/sigc++-2.0/sigc++/adaptors/lambda/group.h \
  /usr/include/sigc++-2.0/sigc++/functors/functors.h \
- /usr/include/gtkmm-3.0/gtkmm/container.h \
- /usr/include/gtkmm-3.0/gtkmm/widget.h \
- /usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h \
- /usr/lib/x86_64-linux-gnu/gdkmm-3.0/include/gdkmmconfig.h \
- /usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h \
- /usr/include/pangomm-1.4/pangomm/context.h \
+ /usr/include/gtkmm-3.0/gtkmm/dialog.h \
+ /usr/include/gtkmm-3.0/gtkmm/window.h \
  /usr/include/glibmm-2.4/glibmm/object.h \
  /usr/include/glibmm-2.4/glibmm/objectbase.h \
  /usr/include/glibmm-2.4/glibmm/class.h \
@@ -146,6 +142,13 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/glibmm-2.4/glibmm/error.h \
  /usr/include/glibmm-2.4/glibmm/exception.h \
  /usr/include/glibmm-2.4/glibmm/variant_basictypes.h \
+ /usr/include/gtkmm-3.0/gtkmm/bin.h \
+ /usr/include/gtkmm-3.0/gtkmm/container.h \
+ /usr/include/gtkmm-3.0/gtkmm/widget.h \
+ /usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h \
+ /usr/lib/x86_64-linux-gnu/gdkmm-3.0/include/gdkmmconfig.h \
+ /usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h \
+ /usr/include/pangomm-1.4/pangomm/context.h \
  /usr/include/glibmm-2.4/glibmm/arrayhandle.h \
  /usr/include/glibmm-2.4/glibmm/listhandle.h \
  /usr/include/pangomm-1.4/pangomm/fontdescription.h \
@@ -719,9 +722,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/giomm-2.4/giomm/actiongroup.h \
  /usr/include/gtkmm-3.0/gtkmm/childpropertyproxy.h \
  /usr/include/gtkmm-3.0/gtkmm/childpropertyproxy_base.h \
- /usr/include/gtkmm-3.0/gtkmm/orientable.h \
- /usr/include/gtkmm-3.0/gtkmm/hvbox.h \
- /usr/include/gtkmm-3.0/gtkmm/window.h /usr/include/gtkmm-3.0/gtkmm/bin.h \
  /usr/include/gtkmm-3.0/gtkmm/application.h \
  /usr/include/gtkmm-3.0/gtkmm/actiongroup.h \
  /usr/include/gtkmm-3.0/gtkmm/action.h \
@@ -771,11 +771,17 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/giomm-2.4/giomm/menu.h \
  /usr/include/giomm-2.4/giomm/menuitem.h \
  /usr/include/gtkmm-3.0/gtkmm/windowgroup.h \
+ /usr/include/gtkmm-3.0/gtkmm/box.h \
+ /usr/include/gtkmm-3.0/gtkmm/orientable.h \
+ /usr/include/gtkmm-3.0/gtkmm/hvbox.h \
+ /usr/include/gtkmm-3.0/gtkmm/button.h \
+ /usr/include/gtkmm-3.0/gtkmm/activatable.h \
+ /usr/include/gtkmm-3.0/gtkmm/buttonbox.h \
+ /usr/include/gtkmm-3.0/gtkmm/hvbuttonbox.h \
+ /usr/include/gtkmm-3.0/gtkmm/headerbar.h ../src/step.h \
  /usr/include/gtkmm-3.0/gtkmm/radiobutton.h \
  /usr/include/gtkmm-3.0/gtkmm/checkbutton.h \
  /usr/include/gtkmm-3.0/gtkmm/togglebutton.h \
- /usr/include/gtkmm-3.0/gtkmm/button.h \
- /usr/include/gtkmm-3.0/gtkmm/activatable.h \
  /usr/include/gtkmm-3.0/gtkmm/radiobuttongroup.h \
  /usr/include/gtkmm-3.0/gtkmm/separator.h \
  /usr/include/gtkmm-3.0/gtkmm/hvseparator.h \
@@ -912,10 +918,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/gtkmm-3.0/gtkmm/toggleaction.h \
  /usr/include/gtkmm-3.0/gtkmm/radioaction.h \
  /usr/include/gtkmm-3.0/gtkmm/aboutdialog.h \
- /usr/include/gtkmm-3.0/gtkmm/dialog.h \
- /usr/include/gtkmm-3.0/gtkmm/buttonbox.h \
- /usr/include/gtkmm-3.0/gtkmm/hvbuttonbox.h \
- /usr/include/gtkmm-3.0/gtkmm/headerbar.h \
  /usr/include/gtkmm-3.0/gtkmm/accelmap.h \
  /usr/include/gtkmm-3.0/gtkmm/actionable.h \
  /usr/include/gtkmm-3.0/gtkmm/actionbar.h \
@@ -1032,7 +1034,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/gtkmm-3.0/gtkmm/menubar.h \
  /usr/include/gtkmm-3.0/gtkmm/menubutton.h \
  /usr/include/gtkmm-3.0/gtkmm/popover.h \
- /usr/include/gtkmm-3.0/gtkmm/messagedialog.h \
  /usr/include/gtkmm-3.0/gtkmm/notebook.h \
  /usr/include/gtkmm-3.0/gtkmm/numerableicon.h \
  /usr/include/gtkmm-3.0/gtkmm/offscreenwindow.h \
@@ -1103,11 +1104,10 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
  /usr/include/gtkmm-3.0/gtkmm/treestore.h \
  /usr/include/gtkmm-3.0/gtkmm/uimanager.h \
  /usr/include/gtkmm-3.0/gtkmm/viewport.h \
- /usr/include/gtkmm-3.0/gtkmm/volumebutton.h ../src/lexico.h
+ /usr/include/gtkmm-3.0/gtkmm/volumebutton.h ../src/lexico.h \
+ ../src/interfaces.h
 
-../src/interfaces.h:
-
-/usr/include/gtkmm-3.0/gtkmm/box.h:
+/usr/include/gtkmm-3.0/gtkmm/messagedialog.h:
 
 /usr/include/glibmm-2.4/glibmm/ustring.h:
 
@@ -1335,17 +1335,9 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 
 /usr/include/sigc++-2.0/sigc++/functors/functors.h:
 
-/usr/include/gtkmm-3.0/gtkmm/container.h:
+/usr/include/gtkmm-3.0/gtkmm/dialog.h:
 
-/usr/include/gtkmm-3.0/gtkmm/widget.h:
-
-/usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h:
-
-/usr/lib/x86_64-linux-gnu/gdkmm-3.0/include/gdkmmconfig.h:
-
-/usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h:
-
-/usr/include/pangomm-1.4/pangomm/context.h:
+/usr/include/gtkmm-3.0/gtkmm/window.h:
 
 /usr/include/glibmm-2.4/glibmm/object.h:
 
@@ -1428,6 +1420,20 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 /usr/include/glibmm-2.4/glibmm/exception.h:
 
 /usr/include/glibmm-2.4/glibmm/variant_basictypes.h:
+
+/usr/include/gtkmm-3.0/gtkmm/bin.h:
+
+/usr/include/gtkmm-3.0/gtkmm/container.h:
+
+/usr/include/gtkmm-3.0/gtkmm/widget.h:
+
+/usr/lib/x86_64-linux-gnu/gtkmm-3.0/include/gtkmmconfig.h:
+
+/usr/lib/x86_64-linux-gnu/gdkmm-3.0/include/gdkmmconfig.h:
+
+/usr/lib/x86_64-linux-gnu/pangomm-1.4/include/pangommconfig.h:
+
+/usr/include/pangomm-1.4/pangomm/context.h:
 
 /usr/include/glibmm-2.4/glibmm/arrayhandle.h:
 
@@ -2635,14 +2641,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 
 /usr/include/gtkmm-3.0/gtkmm/childpropertyproxy_base.h:
 
-/usr/include/gtkmm-3.0/gtkmm/orientable.h:
-
-/usr/include/gtkmm-3.0/gtkmm/hvbox.h:
-
-/usr/include/gtkmm-3.0/gtkmm/window.h:
-
-/usr/include/gtkmm-3.0/gtkmm/bin.h:
-
 /usr/include/gtkmm-3.0/gtkmm/application.h:
 
 /usr/include/gtkmm-3.0/gtkmm/actiongroup.h:
@@ -2741,15 +2739,29 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 
 /usr/include/gtkmm-3.0/gtkmm/windowgroup.h:
 
+/usr/include/gtkmm-3.0/gtkmm/box.h:
+
+/usr/include/gtkmm-3.0/gtkmm/orientable.h:
+
+/usr/include/gtkmm-3.0/gtkmm/hvbox.h:
+
+/usr/include/gtkmm-3.0/gtkmm/button.h:
+
+/usr/include/gtkmm-3.0/gtkmm/activatable.h:
+
+/usr/include/gtkmm-3.0/gtkmm/buttonbox.h:
+
+/usr/include/gtkmm-3.0/gtkmm/hvbuttonbox.h:
+
+/usr/include/gtkmm-3.0/gtkmm/headerbar.h:
+
+../src/step.h:
+
 /usr/include/gtkmm-3.0/gtkmm/radiobutton.h:
 
 /usr/include/gtkmm-3.0/gtkmm/checkbutton.h:
 
 /usr/include/gtkmm-3.0/gtkmm/togglebutton.h:
-
-/usr/include/gtkmm-3.0/gtkmm/button.h:
-
-/usr/include/gtkmm-3.0/gtkmm/activatable.h:
 
 /usr/include/gtkmm-3.0/gtkmm/radiobuttongroup.h:
 
@@ -3025,14 +3037,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 
 /usr/include/gtkmm-3.0/gtkmm/aboutdialog.h:
 
-/usr/include/gtkmm-3.0/gtkmm/dialog.h:
-
-/usr/include/gtkmm-3.0/gtkmm/buttonbox.h:
-
-/usr/include/gtkmm-3.0/gtkmm/hvbuttonbox.h:
-
-/usr/include/gtkmm-3.0/gtkmm/headerbar.h:
-
 /usr/include/gtkmm-3.0/gtkmm/accelmap.h:
 
 /usr/include/gtkmm-3.0/gtkmm/actionable.h:
@@ -3267,8 +3271,6 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 
 /usr/include/gtkmm-3.0/gtkmm/popover.h:
 
-/usr/include/gtkmm-3.0/gtkmm/messagedialog.h:
-
 /usr/include/gtkmm-3.0/gtkmm/notebook.h:
 
 /usr/include/gtkmm-3.0/gtkmm/numerableicon.h:
@@ -3412,3 +3414,5 @@ src/interfaces.d: ../src/interfaces.cpp ../src/interfaces.h \
 /usr/include/gtkmm-3.0/gtkmm/volumebutton.h:
 
 ../src/lexico.h:
+
+../src/interfaces.h:
