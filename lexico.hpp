@@ -1,5 +1,5 @@
 // Header Analisador Léxico
-// lexico.h
+// lexico.hpp
 
 #ifndef LEXICO_HPP
 #define LEXICO_HPP
@@ -17,6 +17,8 @@ class Lexico{
 	public:
 		Lexico(); // Construtor default da classe
 
+		list<string> getList();	// Get para pegar a lista
+
 		int lerEntrada(ifstream *arq); // Realiza a leitura do arquivo de entrada separando os tokens em cada posição da lista
 			
 		void push(string valor); // Adiciona uma string ao final da lista
@@ -27,7 +29,7 @@ class Lexico{
 			
 		void imprimeLista(); // imprime a lista
 
-        int stringToInt(string str);// onde a mágica acontece
+        int stringToInt(string str); // onde a mágica acontece, converte string para inteiro
 
         vector <vector<int> > identificaToken(vector <vector<int> > interpretadorVector); //   função de identifica os token presentes na lista
 

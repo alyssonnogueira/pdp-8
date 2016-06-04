@@ -1,0 +1,15 @@
+100;5
+1;+1130;Copie o conteúdo do endereço 30 no acumulador
+2;+1240;Copie o conteúdo do acumulador no endereço 40
+3;+3150;Leia um número e coloque no endereço 50
+4;+4150;Imprima o conteúdo do endereço 50
+5;+1140;Copie o conteúdo do endereço 50 no acumulador
+6;+2350;multiplique o conteúdo do endereço 50 com o conteúdo do acumulador e guarde no acumulador
+7;+5612;Se o conteúdo do acumulador for menor que zero, desvie para o endereço 11
+8;+1140;Copie o conteúdo do endereço 40 no acumulador
+9;+2350;Some o conteúdo do endereço 50 com o conteúdo do acumulador e guarde no acumulador
+10;+1240;Copie o conteúdo do acumulador no endereço 40
+11;+5103;Desvie para o endereço 03
+12;+4140;Imprima o conteúdo do endereço 40
+13;+7000;Pare
+30;+0001;Usado para definir Ac como +0001

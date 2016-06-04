@@ -1,0 +1,22 @@
+100;5
+1;+1132;Copie o conteúdo do endereço 30 no acumulador
+2;+1240;Copie o conteúdo do acumulador no endereço 40
+3;+1132;Load the counter
+4;+2130;Adds 1 in the counter
+5;+1232;Copie o conteúdo do acumulador para o endereco 30
+6;+2231;subtrai 3 do contador
+7;+5414;Se o conteúdo do acumulador for igual a zero, desvie para o endereço 14
+8;+3150;Leia um número e coloque no endereço 50
+9;+4150;Imprima o conteúdo do endereço 50
+10;+1140;Copie o conteúdo do endereço 40 no acumulador
+11;+2150;Some o conteúdo do endereço 50 com o conteúdo do acumulador e guarde no acumulador
+12;+1240;Copie o conteúdo do acumulador no endereço 40
+13;+5103;Desvie para o endereço 03
+14;+1140;Copie o conteúdo do endereço 40 no acumulador
+15;+2431;Divide por 3, para obter a media dos valores informados
+16;+1240;Copie o conteúdo do acumulador no endereço 40
+17;+4140;Imprima o conteúdo do endereço 40
+18;+7000;Pare
+30;+0001;Usado para definir Ac como +0001
+31;+0003;Usado para divisão e condição
+32;+0000;Usado para o contador

@@ -1,4 +1,4 @@
-// Programa principal para testar o analisador léxico
+// Construção das funções declaradas em lexico.hpp
 
 #include <iostream>
 #include <string.h>
@@ -10,8 +10,11 @@
 
 using namespace std;
 
-Lexico::Lexico(){ }// Construtor default da classe
+Lexico::Lexico(){ } // Construtor default da classe
 
+list<string> Lexico::getList(){ // Get para pegar a lista
+  return lista;
+}
 int Lexico::lerEntrada(ifstream *arq){ // Realiza a leitura do arquivo de entrada separando os tokens em cada posição da lista
   char ch;
   string retorno;
@@ -58,9 +61,9 @@ int Lexico::stringToInt(string str){ // onde a mágica acontece
   return retorno;
 }
 
-vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretadorVector){//   função de identifica os token presentes na lista
+vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretadorVector){ //   função de identifica os token presentes na lista
 
-  string comando,instr,ender;
+  string comando,instr,ender,linha;
   int i = 0, inteiro;
 
   // Remove os dois primeiros elementos que são o numero de linhas e a linha que começa a execução
@@ -69,7 +72,9 @@ vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretado
   
   while(!(lista.empty())){
   
-    pop();
+    linha = top();  // Pega a linha de cada comando passado no arquivo de entrada
+    i = stringToInt(linha); // i passa a ser a linha equivalente do arquivo de entrada
+    pop();  // retirna esse valor da fila
 
     comando = top();    //copia o conteudo da lista para a variavel
 
@@ -78,7 +83,6 @@ vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretado
     instr += comando[2];//serpara o conteudo, para realizar o teste e descobrir o comando
     inteiro = stringToInt(instr);
     interpretadorVector[i][0] = inteiro;
-    cout << inteiro << " ";
     // =================
 
     // Pega endereco de memoria
@@ -86,9 +90,8 @@ vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretado
     ender += comando[4];
     inteiro = stringToInt(ender);
     interpretadorVector[i][1] = inteiro;
-    cout << inteiro << " " << endl;
     //==================
-    i++;
+      
     // Remove comentario
     pop();
     pop();

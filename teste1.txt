@@ -1,0 +1,21 @@
+100;5
+0;+0000;Used to initialize the memory's postions
+1;+0001;Used to add 1 into the counter
+5;+1100;Set the accumulator to +0000
+6;+1204;Set 04 as +0000
+7;+1100;Set the accumulator to +0000
+8;+1202;Set 02 as +0000
+9;+3103;Reads and save into 03
+10;+4103;Prints the readed number
+11;+1103;Put the readed number into the accumulator
+12;+5620;If the number is less than 0 goes to 20
+13;+1104;Load the counter
+14;+2101;Adds 1 in the counter
+15;+1204;Save the accumulator in 04
+16;+1102;Load the sum
+17;+2103;Adds the readed number with the sum
+18;+1202;Save the result into 02
+19;+5109;Goes back to 09
+20;+4104;Prints the Counter
+21;+4102;Prints the Sum
+22;+7000;Finish the program

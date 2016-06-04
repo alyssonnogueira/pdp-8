@@ -1,3 +1,5 @@
+// Header do Interpretador
+// interpretador.hpp
 
 #ifndef INTERPRETADOR_HPP
 #define INTERPRETADOR_HPP
@@ -17,16 +19,16 @@ class Interpretador{
     public:
 		Interpretador(); // Construtor default da classe
 
-    int findStop(vector < vector<int> > listaComandos);
+    void iniciaTabela(vector < vector<int> > listaComandos); // Inicia a tabela de simbolos toda com zero
 
-    void iniciaTabela();
+    void processaCodigo(vector < vector<int> > listaComandos); // Processa as instruções passadas do código de entrada
 
-    void constroiTabela (vector < vector<int> > listaComandos);
+    int* getSymbolTable(); // Get para a tabela de simbolos
 
-    void processaCodigo(vector < vector<int> > listaComandos);
+    int getACC(); // Get para o acumulador
 
   protected:
-    int symbolTable[100];
-    int ACC;
+    int symbolTable[100]; // tabela de simbolos
+    int ACC;  // acumulador
 };
 #endif
