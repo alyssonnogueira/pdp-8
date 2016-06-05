@@ -8,10 +8,10 @@
 #include <time.h>
 #include <gtkmm/messagedialog.h>
 #include <vector>
+// Inclui os Headers
 #include "step.h"
 #include "lexico.h"
 #include "interfaces.h"
-// Inclui o Header da classe lexico.h
 
 using namespace std;
 
@@ -25,13 +25,15 @@ Interfaces::Interfaces() :
   mButtonExecute("Executar Programa"),
   mButtonBox(Gtk::ORIENTATION_HORIZONTAL)
 {
+
   // Set title and border of the window
   set_title("HIPO");
   set_border_width(1);
   set_default_size(1000, 500);
   mBox1.set_size_request(500, 400);
   mBox2.set_size_request(500, 400);
-   // Add outer box to the window (because the window
+
+  // Add outer box to the window (because the window
   // can only contain a single widget)
   add(mBox);
 
@@ -41,10 +43,10 @@ Interfaces::Interfaces() :
   mBox.pack_start(mButtonBox);
   mBox.pack_start(mBoxDown);
   mBoxDown.pack_start(mBox1);
-  //mBoxDown.pack_start(mSeparator);
   mBoxDown.pack_start(mBox2);
   mBox1.pack_start(m_ScrolledWindow);
   mBox2.pack_start(m_TextView);
+
   // Set the inner boxes' borders
   mBox2.set_border_width(1);
   mBox1.set_border_width(1);
@@ -67,29 +69,10 @@ Interfaces::Interfaces() :
     m_refTreeModel = Gtk::ListStore::create(m_Columns);
     m_TreeView.set_model(m_refTreeModel);
 
-    //Fill the TreeView's model
-    /*Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-    row[m_Columns.m_col_id] = "1";
-    row[m_Columns.m_col_name] = "Billy Bob";
-    row[m_Columns.m_col_number] = "10";
-    //row[m_Columns.m_col_percentage] = 15;
-
-*/
     //Add the TreeView's view columns:
     m_TreeView.append_column("ID", m_Columns.m_col_id);
     m_TreeView.append_column("Valor", m_Columns.m_col_name);
     m_TreeView.append_column("Comentario", m_Columns.m_col_number);
-    //Gtk::TreeView::Column* Coluna = m_TreeView.get_column(i);
-      //  pColumn->set_reorderable();
-    //Display a progress bar instead of a decimal number:
-    /*Gtk::CellRendererProgress* cell = Gtk::manage(new Gtk::CellRendererProgress);
-    int cols_count = m_TreeView.append_column("Some percentage", *cell);
-    Gtk::TreeViewColumn* pColumn = m_TreeView.get_column(cols_count - 1);
-    if(pColumn)
-    {
-      pColumn->add_attribute(cell->property_value(), m_Columns.m_col_percentage);
-    }
-    */
 
     //Make all the columns reorderable and define a min_size:
     for(guint i = 0; i < 2; i++)
@@ -125,28 +108,11 @@ void Interfaces::on_button_execute_clicked()
 	} else {
 			string retorno;
 		  	vector<int> interpretador;
-
-		    /*lexico.identificaToken(&interpretador);
-
-		    cout << "SAIDA DO VECTOR COM INSTRUCOES E ENDERECOS" << endl;
-		    for(int i = 0; i < interpretador.size(); i++){
-		      if(i % 2 == 1)
-		          cout << interpretador[i] << endl;
-		      else
-		          cout << interpretador[i] << " ";
-		    }*/
 		  	cout << "SAIDA DO VECTOR COM INSTRUCOES E ENDERECOS" << endl;
 		    cout << endl;
 		  	entrada.close();
 
-		  	//Voltar para impedir ciclo direto que C++ não permite
 		  	mStep = new Step(this->filename, &lexico);	//Inicia Step
-		  //	Refresh *refresh = new refresh(step); 		//Inicia Refresh
-		  //	lexico->mRefresh = refresh;					//Salva em lexico a classe de Refresh
-		  	/*GtkWidget* window;
-		  	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-		  	gtk_widget_show_all (window);
-		  	*/
 	}
 	}
 
@@ -199,7 +165,6 @@ void Interfaces::on_button_chooser_clicked()
 			entrada.open(this->filename.c_str(), ios::in);
 		 	if (!entrada){
 		     		cout << "Não foi possível abrir o arquivo!" << endl;
-		     		//return 0;
 		  	}
 
 		  	if(!lexico.lerEntrada(&entrada)){ // Le o arquivo de entrada
@@ -212,9 +177,11 @@ void Interfaces::on_button_chooser_clicked()
 		    std::list<string>::iterator ptr;
 		    int i = 0;
 		    Gtk::TreeModel::Row row;// = *(m_refTreeModel->append());
+		    //Pega tamanho do código
 		    ptr = lista.begin();
 		    lista.pop_front();
 		    int tamList = lexico.stringToInt(*ptr);
+		    //Pega o tamanho em bits dos operandos
 		    ptr = lista.begin();
 		    lista.pop_front();
 		    int tamInstrucoes = lexico.stringToInt(*ptr);
@@ -265,7 +232,6 @@ void Interfaces::fill_buffer(){
 	} else {
 		while (fp.get(ch)) {
 			retorno += ch;
-	        //fp.put(ch);
 	        }
 		m_refTextBuffer->set_text(retorno);
 	}

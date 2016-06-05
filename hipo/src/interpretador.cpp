@@ -7,16 +7,16 @@
 #include <stdio.h>
 #include <vector>
 
-// Inclui o header do interpretador.hpp
+// Inclui os headers
 #include "interpretador.h"
 #include "Refresh.h"
-//#include "Refresh.h"
+
 using namespace std;
 
 Interpretador::Interpretador(){ } // Construtor default da classe
 
 int Interpretador::getACC(){ // Get para o acumulador
-    return this->ACC;
+    return this->Acc;
 }
 
 int* Interpretador::getSymbolTable(){ // Get para a tabela de simbolos
@@ -36,24 +36,21 @@ void Interpretador::iniciaTabela(vector < vector<int> > listaComandos){ // Inici
 
 int Interpretador::processaCodigo(void *step, vector < vector<int> > listaComandos){ // Processa as instruções passadas do código de entrada
     Refresh refresh;
-	ACC=0;
+	static int ACC=0;
+	static int i = 0;
     iniciaTabela(listaComandos); // Inicia a tabela de simbolos
-    static int i = 0; // i simboliza o indereço de memoria
+     // i simboliza o indereço de memoria
     if (i == 0){
     this->listaComandos = listaComandos;
     }
-    if (this->mValue == true){
-    	cout << "Tabela: " << symbolTable[this->listaComandos[i][1]] << endl;
-    	            std::ostringstream label2;
-    	            label2 << "Tabela: " << symbolTable[this->listaComandos[i][1]] << endl;
-    	            refresh.Refresh_NewValue(step, label2.str());
-    	            cout << endl;
-    }
+
     if (i<this->listaComandos.size()){
+    	this->id = i;
+    	this->Acc = ACC;
     //for(i; i < this->listaComandos.size(); i++){
     	cout << this->listaComandos[i][0]<<" ";
     	cout << this->listaComandos[i][1]<< " ";
-    	cout << "Acumulador" << ACC << endl;
+    	cout << "Acumulador " << ACC << endl;
     	refresh.Refresh_StepWindow(step, i, this->listaComandos[i][0], this->listaComandos[i][1]);
         if(listaComandos[i][0] == 11){ //LDA
             ACC = symbolTable[this->listaComandos[i][1]];
@@ -89,7 +86,6 @@ int Interpretador::processaCodigo(void *step, vector < vector<int> > listaComand
             cout <<"Digite um valor: ";
             string label = "Digite um valor: ";
             //cin >> symbolTable[this->listaComandos[i][1]];
-            ValueOk = false;
             int retorno = refresh.Refresh_NewValue(step, label);
             cout << endl;
           }
@@ -139,10 +135,16 @@ int Interpretador::processaCodigo(void *step, vector < vector<int> > listaComand
            	return 0;
         }
         i++;
-        //getchar();
-    } /*else {
-    	cout << "FIM DE PROGRAMA" << endl;
-    	cout << endl;
-    	return 0;
-    }*/
+    }
+}
+
+//Atualiza tambela de simbolos
+void Interpretador::RefreshSimbolTable(void *step){
+		Refresh refresh;
+		symbolTable[this->listaComandos[id][1]] = mValue;
+	    cout << "Tabela: " << symbolTable[this->listaComandos[id][1]] << endl;
+	    cout << endl;
+	    std::ostringstream label2;
+	    label2 << "Tabela: " << symbolTable[this->listaComandos[id][1]];
+	    refresh.Refresh_NewValue(step, label2.str());
 }

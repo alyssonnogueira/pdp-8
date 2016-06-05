@@ -22,8 +22,6 @@
 #include "lexico.h"
 #include "step.h"
 #include "interpretador.h"
-//#include <gtkmm/grid.h>
-
 
 class Interfaces : public Gtk::Window
 {
@@ -34,6 +32,7 @@ public:
   ifstream entrada;
   std::string filename;
   Lexico lexico;
+
   //Tree model columns:
     class ModelColumns : public Gtk::TreeModel::ColumnRecord
     {
@@ -45,21 +44,21 @@ public:
       Gtk::TreeModelColumn<Glib::ustring> m_col_id;
       Gtk::TreeModelColumn<Glib::ustring> m_col_name;
       Gtk::TreeModelColumn<Glib::ustring> m_col_number;
-     // Gtk::TreeModelColumn<int> m_col_percentage;
     };
 
     ModelColumns m_Columns;
 
 protected:
-  //Signal handlers:
+
+    //Signal handlers:
   void on_button_clicked();
   void on_button_chooser_clicked();
   void on_button_execute_clicked();
   void fill_buffer();
 
   Step *mStep;
-    //Child widgets:
-  //Grid
+
+  //Child widgets:
   Gtk::ScrolledWindow m_ScrolledWindow;
   Gtk::TreeView m_TreeView;
   Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
@@ -72,7 +71,6 @@ protected:
   Gtk::Button mButtonChooser, mButtonExecute;
   Gtk::Box mBox, mBoxTop, mBoxDown, mBox1, mBox2;
   Gtk::Separator mSeparator;
-  //Gtk::Grid m_Grid;
 };
 
 #endif //Interfaces_H

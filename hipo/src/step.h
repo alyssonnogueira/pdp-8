@@ -33,7 +33,6 @@ public:
 	      Gtk::TreeModelColumn<int> m_col_id;
 	      Gtk::TreeModelColumn<int> m_col_operacao;
 	      Gtk::TreeModelColumn<int> m_col_operando;
-	     // Gtk::TreeModelColumn<int> m_col_percentage;
 	    };
 
 	    ModelColumns m_Columns;

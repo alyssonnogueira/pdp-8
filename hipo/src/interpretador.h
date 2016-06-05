@@ -11,7 +11,7 @@
 #include <list>
 #include <stdio.h>
 #include <vector>
-//#include "Refresh.h"
+
 using namespace std;
 
 
@@ -27,14 +27,14 @@ class Interpretador{
     int* getSymbolTable(); // Get para a tabela de simbolos
 
     vector < vector<int> > getListaComandos();
-
+    void RefreshSimbolTable(void *step);
     int getACC(); // Get para o acumulador
     std::ostringstream text[3];
-    bool ValueOk;
     int mValue;
   protected:
     int symbolTable[100]; // tabela de simbolos
     vector < vector<int> > listaComandos;
-    int ACC;  // acumulador
+    int Acc;  // acumulador
+    int id; //indice global of symbolTable
 };
 #endif

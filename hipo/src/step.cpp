@@ -8,6 +8,7 @@
 #include <time.h>
 #include <gtkmm/messagedialog.h>
 #include <vector>
+//Heads
 #include "step.h"
 #include "lexico.h"
 #include "interfaces.h"
@@ -109,7 +110,6 @@ void Step::on_button_clicked()
 void Step::on_button_step_clicked()
 {
 	static int i = 0;
-	static int j = 0;
 	static Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 	vector < vector<int> > lista;
 	if (this->filename.length() == 0){
@@ -121,31 +121,11 @@ void Step::on_button_step_clicked()
 	} else {
 			string retorno;
 			if (i == 0){
-			//vector<int> interpretador;
-
-		    //lexico.identificaToken(&interpretador);
-			interpretador = lexico->identificaToken(interpretador);
-		    cout << "SAIDA DO VECTOR COM INTRUCOES E ENDERECOS" << endl;
-		   // for(int i = 0; i < interpretador.size(); i++){
-		    //&processador.mLexico = lexico;
+				interpretador = lexico->identificaToken(interpretador);
+				cout << "SAIDA DO VECTOR COM INTRUCOES E ENDERECOS" << endl;
 			}
 			processador.processaCodigo(this, interpretador);
 			lista = processador.getListaComandos();
-		    //int init= lexico->getTamList();
-		    //int *symbolTable = processador.getSymbolTable();
-		    if(i % 2 == 1){
-		    	//  row = *(m_refTreeModel->append());
-		    	//  row[m_Columns.m_col_id] = j;
-		    	  //cout << interpretador[i] << endl;
-		    	//  row[m_Columns.m_col_operacao] = lista[i][0];// lexico->stringToInt(processador.text[0].str());
-		    	  j++;
-		      } else {
-		         // cout << interpretador[i] << " ";
-		      	//  row[m_Columns.m_col_operando] = lista[i][1];//lexico->stringToInt(processador.text[1].str());
-		      	// std::ostringstream acc;
-		      	// acc << "Acumulador: " << processador.getACC(); //processador.text[1].str();
-		      	//  this->mLabel.set_text(acc.str());
-		      }
 			    i++;
 	}
 }
@@ -175,7 +155,6 @@ void Step::fill_buffer(){
 		} else {
 			while (fp.get(ch)) {
 				retorno += ch;
-		        //fp.put(ch);
 		        }
 			m_refTextBuffer->set_text(retorno);
 		}
@@ -186,7 +165,6 @@ void Step::fill_buffer(){
 void Step::RefreshScreen(int id, int operacao, int operando){
 	Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_id] = id;
-			    	  //cout << interpretador[i] << endl;
 	row[m_Columns.m_col_operacao] = operacao;
 	row[m_Columns.m_col_operando] = operando;//lexico->stringToInt(processador.text[1].str());
 	std::ostringstream acc;
@@ -196,17 +174,16 @@ void Step::RefreshScreen(int id, int operacao, int operando){
 
 int Step::NewValue(string label){
 	this->mLabel.set_text(label);
-	//this->mButtonValue.get_
-	while(processador.mValue == false);
 	return 0;
 }
 
 void Step::ValueTrue(){
 	Glib::RefPtr<Gtk::TextBuffer> refTextBuffer = this->mTextView2.get_buffer();
-	processador.mValue = lexico->stringToInt(refTextBuffer->get_text(1));
-	processador.ValueOk = true;
+	processador.mValue = lexico->stringToInt(refTextBuffer->get_text());
+	cout << "Hear!: " << processador.mValue << endl;
 	refTextBuffer->set_text(" ");
 	this->mTextView2.set_buffer(refTextBuffer);
+	processador.RefreshSimbolTable(this);
 	this->on_button_step_clicked();
 }
 
