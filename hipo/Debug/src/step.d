@@ -1104,7 +1104,7 @@ src/step.d: ../src/step.cpp /usr/include/gtkmm-3.0/gtkmm/messagedialog.h \
  /usr/include/gtkmm-3.0/gtkmm/uimanager.h \
  /usr/include/gtkmm-3.0/gtkmm/viewport.h \
  /usr/include/gtkmm-3.0/gtkmm/volumebutton.h ../src/lexico.h \
- ../src/interfaces.h
+ ../src/interpretador.h ../src/interfaces.h
 
 /usr/include/gtkmm-3.0/gtkmm/messagedialog.h:
 
@@ -3413,5 +3413,7 @@ src/step.d: ../src/step.cpp /usr/include/gtkmm-3.0/gtkmm/messagedialog.h \
 /usr/include/gtkmm-3.0/gtkmm/volumebutton.h:
 
 ../src/lexico.h:
+
+../src/interpretador.h:
 
 ../src/interfaces.h:

@@ -21,6 +21,7 @@
 #include <gtkmm.h>
 #include "lexico.h"
 #include "step.h"
+#include "interpretador.h"
 //#include <gtkmm/grid.h>
 
 
@@ -56,6 +57,7 @@ protected:
   void on_button_execute_clicked();
   void fill_buffer();
 
+  Step *mStep;
     //Child widgets:
   //Grid
   Gtk::ScrolledWindow m_ScrolledWindow;

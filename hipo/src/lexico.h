@@ -1,8 +1,8 @@
 // Header Analisador Léxico
-// lexico.h
+// lexico.hpp
 
-#ifndef LEXICO_HPP
-#define LEXICO_HPP
+#ifndef LEXICO_H
+#define LEXICO_H
 
 #include <iostream>
 #include <string.h>
@@ -10,12 +10,13 @@
 #include <list>
 #include <stdio.h>
 #include <vector>
-
 using namespace std;
 
 class Lexico{
 	public:
 		Lexico(); // Construtor default da classe
+
+		list<string> getList();	// Get para pegar a lista
 
 		int lerEntrada(ifstream *arq); // Realiza a leitura do arquivo de entrada separando os tokens em cada posição da lista
 
@@ -27,14 +28,18 @@ class Lexico{
 
 		void imprimeLista(); // imprime a lista
 
-        int stringToInt(string str);// onde a mágica acontece
+        int stringToInt(string str); // onde a mágica acontece, converte string para inteiro
 
-        void identificaToken(vector<int> *interpretadorVector); //   função de identifica os token presentes na lista
-        list<string> getLista();
-        list<string>::iterator getPonteiro();
+        vector <vector<int> > identificaToken(vector <vector<int> > interpretadorVector); //   função de identifica os token presentes na lista
+        int getTamList();
+        void setTamList(int tamList);
+        int getTamInstrucoes();
+        void setTamInstrucoes(int tamInstrucoes);
 	protected:
 		list<string> lista;				// Cria a lista léxica
 		std::list<string>::iterator ptr;  // cria um iterador de float
+		int tamList;
+		int tamInstrucoes;
 };
 
 #endif

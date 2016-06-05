@@ -1,4 +1,4 @@
-src/interfaces.d: ../src/interfaces.cpp \
+src/Refresh.d: ../src/Refresh.cpp \
  /usr/include/gtkmm-3.0/gtkmm/messagedialog.h \
  /usr/include/glibmm-2.4/glibmm/ustring.h \
  /usr/lib/x86_64-linux-gnu/glibmm-2.4/include/glibmmconfig.h \
@@ -778,7 +778,7 @@ src/interfaces.d: ../src/interfaces.cpp \
  /usr/include/gtkmm-3.0/gtkmm/activatable.h \
  /usr/include/gtkmm-3.0/gtkmm/buttonbox.h \
  /usr/include/gtkmm-3.0/gtkmm/hvbuttonbox.h \
- /usr/include/gtkmm-3.0/gtkmm/headerbar.h ../src/step.h \
+ /usr/include/gtkmm-3.0/gtkmm/headerbar.h ../src/Refresh.h ../src/step.h \
  /usr/include/gtkmm-3.0/gtkmm/radiobutton.h \
  /usr/include/gtkmm-3.0/gtkmm/checkbutton.h \
  /usr/include/gtkmm-3.0/gtkmm/togglebutton.h \
@@ -1105,7 +1105,7 @@ src/interfaces.d: ../src/interfaces.cpp \
  /usr/include/gtkmm-3.0/gtkmm/uimanager.h \
  /usr/include/gtkmm-3.0/gtkmm/viewport.h \
  /usr/include/gtkmm-3.0/gtkmm/volumebutton.h ../src/lexico.h \
- ../src/interpretador.h ../src/interfaces.h
+ ../src/interpretador.h
 
 /usr/include/gtkmm-3.0/gtkmm/messagedialog.h:
 
@@ -2755,6 +2755,8 @@ src/interfaces.d: ../src/interfaces.cpp \
 
 /usr/include/gtkmm-3.0/gtkmm/headerbar.h:
 
+../src/Refresh.h:
+
 ../src/step.h:
 
 /usr/include/gtkmm-3.0/gtkmm/radiobutton.h:
@@ -3416,5 +3418,3 @@ src/interfaces.d: ../src/interfaces.cpp \
 ../src/lexico.h:
 
 ../src/interpretador.h:
-
-../src/interfaces.h:

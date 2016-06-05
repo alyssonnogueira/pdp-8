@@ -1104,7 +1104,7 @@ src/hipo.d: ../src/hipo.cpp ../src/interfaces.h \
  /usr/include/gtkmm-3.0/gtkmm/uimanager.h \
  /usr/include/gtkmm-3.0/gtkmm/viewport.h \
  /usr/include/gtkmm-3.0/gtkmm/volumebutton.h ../src/lexico.h \
- ../src/step.h
+ ../src/step.h ../src/interpretador.h
 
 ../src/interfaces.h:
 
@@ -3415,3 +3415,5 @@ src/hipo.d: ../src/hipo.cpp ../src/interfaces.h \
 ../src/lexico.h:
 
 ../src/step.h:
+
+../src/interpretador.h:

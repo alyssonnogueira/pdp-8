@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Refresh.cpp \
 ../src/hipo.cpp \
 ../src/interfaces.cpp \
 ../src/interpretador.cpp \
@@ -11,6 +12,7 @@ CPP_SRCS += \
 ../src/step.cpp 
 
 OBJS += \
+./src/Refresh.o \
 ./src/hipo.o \
 ./src/interfaces.o \
 ./src/interpretador.o \
@@ -18,6 +20,7 @@ OBJS += \
 ./src/step.o 
 
 CPP_DEPS += \
+./src/Refresh.d \
 ./src/hipo.d \
 ./src/interfaces.d \
 ./src/interpretador.d \

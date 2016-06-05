@@ -1,4 +1,4 @@
-// Programa principal para testar o analisador léxico
+// Construção das funções declaradas em lexico.hpp
 
 #include <iostream>
 #include <string.h>
@@ -7,12 +7,14 @@
 
 // Inclui o Header da classe lexico.h
 #include "lexico.h"
-#include "interpretador.h"
 
 using namespace std;
 
-Lexico::Lexico(){ }// Construtor default da classe
+Lexico::Lexico(){ } // Construtor default da classe
 
+list<string> Lexico::getList(){ // Get para pegar a lista
+  return lista;
+}
 int Lexico::lerEntrada(ifstream *arq){ // Realiza a leitura do arquivo de entrada separando os tokens em cada posição da lista
   char ch;
   string retorno;
@@ -48,10 +50,6 @@ void Lexico::imprimeLista(){ // imprime a lista
     cout << *ptr << endl;
 }
 
-list<string> Lexico::getLista(){return lista;}
-
-list<string>::iterator Lexico::getPonteiro(){return ptr;}
-
 int Lexico::stringToInt(string str){ // onde a mágica acontece
   int retorno;
   retorno = (str[0] - 0) % 48;
@@ -63,10 +61,10 @@ int Lexico::stringToInt(string str){ // onde a mágica acontece
   return retorno;
 }
 
-void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de identifica os token presentes na lista
+vector <vector<int> > Lexico::identificaToken(vector< vector<int> > interpretadorVector){ //   função de identifica os token presentes na lista
 
-  string comando,instr,ender;
-  int i, inteiro;
+  string comando,instr,ender,linha;
+  int i = 0, inteiro;
 
   // Remove os dois primeiros elementos que são o numero de linhas e a linha que começa a execução
   pop();
@@ -74,7 +72,9 @@ void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de 
 
   while(!(lista.empty())){
 
-    pop();
+    linha = top();  // Pega a linha de cada comando passado no arquivo de entrada
+    i = stringToInt(linha); // i passa a ser a linha equivalente do arquivo de entrada
+    pop();  // retirna esse valor da fila
 
     comando = top();    //copia o conteudo da lista para a variavel
 
@@ -82,14 +82,14 @@ void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de 
     instr = comando[1]; //serpara o conteudo, para realizar o teste e descobrir o comando
     instr += comando[2];//serpara o conteudo, para realizar o teste e descobrir o comando
     inteiro = stringToInt(instr);
-    interpretadorVector->push_back(inteiro);
+    interpretadorVector[i][0] = inteiro;
     // =================
 
     // Pega endereco de memoria
     ender = comando[3]; //separa o conteudo, para receber o endereço
     ender += comando[4];
     inteiro = stringToInt(ender);
-    interpretadorVector->push_back(inteiro);
+    interpretadorVector[i][1] = inteiro;
     //==================
 
     // Remove comentario
@@ -97,4 +97,10 @@ void Lexico::identificaToken(vector<int> *interpretadorVector){//   função de 
     pop();
 
   }
+  return interpretadorVector;
 }
+
+int Lexico::getTamList(){ return this->tamList;}
+void Lexico::setTamList(int tamList){ this->tamList = tamList;}
+int Lexico::getTamInstrucoes(){ return this->tamInstrucoes;}
+void Lexico::setTamInstrucoes(int tamInstrucoes) { this->tamInstrucoes = tamInstrucoes;}

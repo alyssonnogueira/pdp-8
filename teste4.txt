@@ -1,0 +1,9 @@
+100;5
+1;+1132;Copie o conteúdo do endereço 30 no acumulador
+2;+1240;Copie o conteúdo do acumulador no endereço 40
+3;+1132;Load the counter
+4;+2130;Adds 1 in the counter
+5;+1232;Copie o conteúdo do acumulador para o endereco 30
+6;+2231;subtrai 3 do contador
+13;+7000;Pare
+30;+0001;Usado para definir Ac como +0001

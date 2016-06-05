@@ -126,19 +126,24 @@ void Interfaces::on_button_execute_clicked()
 			string retorno;
 		  	vector<int> interpretador;
 
-		    lexico.identificaToken(&interpretador);
+		    /*lexico.identificaToken(&interpretador);
 
-		    cout << "SAIDA DO VECTOR COM INTRUCOES E ENDERECOS" << endl;
+		    cout << "SAIDA DO VECTOR COM INSTRUCOES E ENDERECOS" << endl;
 		    for(int i = 0; i < interpretador.size(); i++){
 		      if(i % 2 == 1)
 		          cout << interpretador[i] << endl;
 		      else
 		          cout << interpretador[i] << " ";
-		    }
+		    }*/
+		  	cout << "SAIDA DO VECTOR COM INSTRUCOES E ENDERECOS" << endl;
 		    cout << endl;
 		  	entrada.close();
-		  	Step *step = new Step();
-		  			  	/*GtkWidget* window;
+
+		  	//Voltar para impedir ciclo direto que C++ não permite
+		  	mStep = new Step(this->filename, &lexico);	//Inicia Step
+		  //	Refresh *refresh = new refresh(step); 		//Inicia Refresh
+		  //	lexico->mRefresh = refresh;					//Salva em lexico a classe de Refresh
+		  	/*GtkWidget* window;
 		  	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 		  	gtk_widget_show_all (window);
 		  	*/
@@ -203,12 +208,19 @@ void Interfaces::on_button_chooser_clicked()
 		    cout << endl;
 		    cout << "SAIDA DA LISTA DO LEXICO" << endl;
 
-		    list<string> lista = lexico.getLista();
-		    std::list<string>::iterator ptr = lexico.getPonteiro();
+		    list<string> lista = lexico.getList();
+		    std::list<string>::iterator ptr;
 		    int i = 0;
 		    Gtk::TreeModel::Row row;// = *(m_refTreeModel->append());
+		    ptr = lista.begin();
 		    lista.pop_front();
+		    int tamList = lexico.stringToInt(*ptr);
+		    ptr = lista.begin();
 		    lista.pop_front();
+		    int tamInstrucoes = lexico.stringToInt(*ptr);
+		    lexico.setTamList(tamList);
+		    lexico.setTamInstrucoes(tamInstrucoes);
+
 		    for ( ptr = lista.begin(); ptr != lista.end(); ptr++ ){
 
 		    	if (i%3 == 0){
@@ -224,16 +236,7 @@ void Interfaces::on_button_chooser_clicked()
 		    	cout << *ptr << endl;
 		        i++;
 		    }
-		    /*while(i < lista.size()){
-		    	Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-		    	row[m_Columns.m_col_id] = lista[i];
-		    	i+=1;
-		    	row[m_Columns.m_col_name] = lista.[i];
-		    	i+=1;
-		    	row[m_Columns.m_col_number] = lista.[i];
-		    	i+=1;
-		    }*/
-		    //lexico.imprimeLista();
+
 		    cout << endl;
       break;
     }
