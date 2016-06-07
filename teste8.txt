@@ -1,0 +1,16 @@
+100;5
+1;+3130;30 recebe entrada
+2;+2930;faz -[30]
+3;+2930;faz -[30]
+4;+1130;AC recebe [30]
+5;+2431;faz [AC] div por [31]
+6;+1232;32 recebe [AC]
+7;+2932;faz -[32]
+8;+5000;nop
+9;+1132;AC recebe [32]
+10;+2230;faz [AC] - [30]
+11;+1230;30 recebe [AC]
+12;+4130;imprime [30]
+13;+7000;para
+31;+0003;constante 3
+

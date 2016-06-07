@@ -1,0 +1,7 @@
+100;5
+1;+3130;30 recebe entrada
+2;+1130;AC recebe [30]
+3;+5506;Se [AC] = 0, para
+4;+5601;Se [AC] < 0 vai para 1
+5;+5401;Se [AC] > 0 vai para 1
+6;+7000;para

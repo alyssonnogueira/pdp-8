@@ -1,0 +1,10 @@
+100;5
+1;+3130;30 recebe entrada
+2;+1130;AC recebe [30]
+3;+2531;faz [AC] mod [31] e resultado fica em AC
+4;+1230;[30] recebe AC
+5;+4130;imprime [30]
+6;+7000;para
+30;+0000;constante zero
+31;+0002;constante 2
+

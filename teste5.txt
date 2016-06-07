@@ -1,0 +1,28 @@
+100;5
+1;+1130;AC recebe [30]
+2;+2335;AC recebe [AC] x [35]
+3;+1230;EE recebe [AC]
+4;+1130;AC recebe [31]
+5;+2335;AC recebe [AC] x [35]
+6;+1230;EE recebe [AC]
+7;+1130;AC recebe [32]
+8;+2335;AC recebe [AC] x [35]
+9;+1230;EE recebe [AC]
+10;+1130;AC recebe [33]
+11;+2335;AC recebe [AC] x [35]
+12;+1230;EE recebe [AC]
+13;+1130;AC recebe [34]
+14;+2335;AC recebe [AC] x [35]
+15;+1230;EE recebe [AC]
+16;+4130;Imprime [30]
+17;+4131;Imprime [31]
+18;+4132;Imprime [32]
+19;+4133;Imprime [33]
+20;+4134;Imprime [34]
+21;+7000;paro
+30;+0002;valor 2
+31;+0004;valor 4
+32;+0006;valor 6
+33;+0008;valor 8
+34;+00010;valor 10
+
