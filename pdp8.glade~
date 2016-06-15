@@ -455,7 +455,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_0">
+              <object class="GtkToggleButton" id="togglebutton1">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -468,7 +468,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_1">
+              <object class="GtkToggleButton" id="togglebutton2">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -481,7 +481,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_2">
+              <object class="GtkToggleButton" id="togglebutton3">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -494,7 +494,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_3">
+              <object class="GtkToggleButton" id="togglebutton4">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -507,7 +507,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_4">
+              <object class="GtkToggleButton" id="togglebutton5">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -520,7 +520,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_5">
+              <object class="GtkToggleButton" id="togglebutton6">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -533,7 +533,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_6">
+              <object class="GtkToggleButton" id="togglebutton7">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -546,7 +546,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_7">
+              <object class="GtkToggleButton" id="togglebutton8">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -559,7 +559,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_8">
+              <object class="GtkToggleButton" id="togglebutton9">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -572,7 +572,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_9">
+              <object class="GtkToggleButton" id="togglebutton10">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -585,7 +585,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_10">
+              <object class="GtkToggleButton" id="togglebutton11">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -598,7 +598,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_11">
+              <object class="GtkToggleButton" id="togglebutton12">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
