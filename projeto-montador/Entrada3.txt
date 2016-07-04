@@ -1,0 +1,7 @@
+*400
+VETOR      , 0; 0; 0; 0; 0
+CLA;       JMP Y
+LABEL1, JMPI VETOR
+LABEL2, CMA
+JMP Y;Y,CMA;JMP X
+$ 

@@ -1,0 +1,9 @@
+PAGE 0;N1, 0;N2, 0  ;R,  0;IOK
+DCA N1
+IOK
+DCA N2
+JMS SOMA
+TAD R
+OOM
+HLT
+$       
