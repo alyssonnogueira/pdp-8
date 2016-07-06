@@ -24,10 +24,279 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkSeparator" id="separator3">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkGrid" id="grid7">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkGrid" id="grid6">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
+                <child>
+                  <object class="GtkLabel" id="label_ema">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">EMA</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label4">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label5">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label6">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">4</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid8">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkImage" id="image1">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image2">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image3">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid9">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkImage" id="image4">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image5">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image6">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid10">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkImage" id="image7">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image8">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image9">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="grid11">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <child>
+                      <object class="GtkImage" id="image10">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image11">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="image12">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="pixbuf">479px-Lol_circle.png</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">4</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
         </child>
         <child>
           <object class="GtkSeparator" id="separator2">
@@ -455,7 +724,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_0">
+              <object class="GtkToggleButton" id="togglebutton1">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -468,7 +737,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_1">
+              <object class="GtkToggleButton" id="togglebutton2">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -481,7 +750,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_2">
+              <object class="GtkToggleButton" id="togglebutton3">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -494,7 +763,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_3">
+              <object class="GtkToggleButton" id="togglebutton4">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -507,7 +776,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_4">
+              <object class="GtkToggleButton" id="togglebutton5">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -520,7 +789,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_5">
+              <object class="GtkToggleButton" id="togglebutton6">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -533,7 +802,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_6">
+              <object class="GtkToggleButton" id="togglebutton7">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -546,7 +815,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_7">
+              <object class="GtkToggleButton" id="togglebutton8">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -559,7 +828,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_8">
+              <object class="GtkToggleButton" id="togglebutton9">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -572,7 +841,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_9">
+              <object class="GtkToggleButton" id="togglebutton10">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -585,7 +854,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_10">
+              <object class="GtkToggleButton" id="togglebutton11">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
@@ -598,7 +867,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToggleButton" id="togglebutton_11">
+              <object class="GtkToggleButton" id="togglebutton12">
                 <property name="label" translatable="yes">
 </property>
                 <property name="visible">True</property>
