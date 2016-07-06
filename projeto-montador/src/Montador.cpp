@@ -68,7 +68,10 @@ void Montador::assemblerOne(string source) {
                  LC += this->getAbsoluteAdress(operand);
             }
             else if(opcode == "$") {
-                //assemblerTwo(this->file);
+                this->file.close();
+                this->setLiteralTable(LC);
+                this->generatedEDS();
+                assemblerTwo(source);
                 return;
             }
             else {
@@ -90,6 +93,140 @@ void Montador::assemblerOne(string source) {
             }
         }
   	}
+}
+
+void Montador::assemblerTwo(string source) {
+    int LC = 0;
+
+    this->file.open(source.c_str());
+
+    if (!this->file){
+        cout << "Unable to open file!" << endl;
+        return ;
+  	}
+
+  	while(!this->file.eof()) {
+        string instruction = this->getInstruction(&this->file);
+        string opcode = this->getOperation(instruction);
+        string operand = this->getOperand(instruction);
+
+        if(opcode[0] == '*') {
+            LC = this->getOperandValue(opcode.erase(0, 1));
+        }
+        else if(opcode == "PAGE") {
+            LC += this->getAbsoluteAdress(operand);
+        }
+        else if(opcode == "$") {
+            this->file.close();
+            return;
+        }
+        else {
+            this->generatedObjectCode(LC, opcode, operand);
+            LC++;
+        }
+  	}
+}
+
+void Montador::printObjectCode() {
+    for(int i = 0; i < this->objectCode.size(); i++) {
+        cout << objectCode[i].adress << "\t";
+        cout << objectCode[i].id << "\t";
+        cout << objectCode[i].opcode << "\t";
+        cout << objectCode[i].operand << "\n";
+    }
+}
+
+void Montador::assembleObjectCode(int m_position, int m_opcode, int m_operand, int id_EDS) {
+    int id = -1;
+
+    if(m_operand == -2) {
+        m_operand = 0;
+        id = id_EDS;
+    }
+
+    struct oc o;
+
+    o.adress = m_position;
+    o.id = id;
+    o.opcode = m_opcode;
+    o.operand = m_operand;
+
+    this->objectCode.push_back(o);
+}
+
+void Montador::generatedObjectCode(int m_position, string opcode, string operand) {
+    int m_opcode, m_operand, id_EDS;
+
+    if(opcode[0] >= 48 && opcode[0] <= 57) {
+        m_opcode = this->getOperandValue(opcode);
+    }
+    else {
+        for(int i = 0; i < this->MOT.size(); i++) {
+            if(this->MOT[i].i_name == opcode) {
+                m_opcode = this->MOT[i].m_code;
+                break;
+            }
+        }
+    }
+
+    if(operand.size() == 0) {
+        m_operand = -1;
+    }
+    else {
+        if(operand[0] == '(') {
+            for(int i = 0; i < this->LT.size(); i++) {
+                if(this->LT[i].literal == operand) {
+                    m_operand = this->LT[i].adress;
+                break;
+                }
+            }
+        }
+        else if(opcode[0] >= 48 && opcode[0] <= 57) {
+            m_operand = this->getOperandValue(operand);
+        }
+        else {
+            for(int i = 0; i < this->ST.size(); i++) {
+                if(this->ST[i].symbol == operand) {
+                    m_operand = this->ST[i].adress;
+                    if(m_operand == -1) {
+                        m_operand = -2;
+                        for(int i = 0; i < this->EDS.size(); i++) {
+                            if(this->EDS[i].symbol == operand) {
+                                id_EDS = this->EDS[i].id;
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    this->assembleObjectCode(m_position, m_opcode, m_operand, id_EDS);
+}
+
+void Montador::printEDSTable() {
+    for(int i = 0; i < this->EDS.size(); i++) {
+        cout << this->EDS[i].id << " " << this->EDS[i].symbol << "  " << this->EDS[i].adress << "\n";
+    }
+}
+
+void Montador::generatedEDS() {
+    for(int i = 0; i < this->ST.size(); i++) {
+        if(this->ST[i].adress == -1) {
+            struct eds e;
+            e.id = this->EDS.size();
+            e.symbol = this->ST[i].symbol;
+            e.adress = this->ST[i].adress;
+            this->EDS.push_back(e);
+        }
+    }
+}
+
+void Montador::setLiteralTable(int begin) {
+    for(int i = 0; i < this->LT.size(); i++) {
+        this->LT[i].adress = begin + i;
+    }
 }
 
 void Montador::printLiteralTable() {

@@ -10,9 +10,8 @@ int main()
 {
     Montador m;
 
-    m.assemblerOne("Entrada4.txt");
-
-    m.printLiteralTable();
+    m.assemblerOne("Entrada.txt");
+    m.printObjectCode();
 
     return 0;
 }

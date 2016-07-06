@@ -10,20 +10,33 @@ using namespace std;
 
 class Montador
 {
-    typedef struct mot {
+    struct mot {
         string i_name;
         int n_operands;
         int m_code;
     };
 
-    typedef struct st {
+    struct st {
         string symbol;
         int adress = -1;
     };
 
-    typedef struct lt {
+    struct lt {
         string literal;
         int adress = -1;
+    };
+
+    struct eds {
+        int id;
+        string symbol;
+        int adress;
+    };
+
+    struct oc {
+        int adress;
+        int id;
+        int opcode;
+        int operand;
     };
 
     public:
@@ -42,6 +55,13 @@ class Montador
         int getAbsoluteAdress(string operand);
         void printSymbolTable();
         void printLiteralTable();
+        void setLiteralTable(int begin);
+        void assemblerTwo(string source);
+        void generatedEDS();
+        void printEDSTable();
+        void generatedObjectCode(int m_position, string opcode, string operand);
+        void assembleObjectCode(int m_position, int m_opcode, int m_operand, int id_EDS);
+        void printObjectCode();
     protected:
     private:
         ifstream file;
@@ -50,6 +70,8 @@ class Montador
         vector<struct mot> MOT;
         vector<struct st> ST;
         vector<struct lt> LT;
+        vector<struct eds> EDS;
+        vector<struct oc> objectCode;
 
         struct mot i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14,
             i15, i16, i17, i18, i19, i20, i21, i22, i23, i24, i25, i26, i27;
