@@ -60,8 +60,11 @@ class Montador
         void generatedEDS();
         void printEDSTable();
         void generatedObjectCode(int m_position, string opcode, string operand);
-        void assembleObjectCode(int m_position, int m_opcode, int m_operand, int id_EDS);
+        void assembleObjectCode(int m_position, int id, int m_opcode, int m_operand);
         void printObjectCode();
+        void addLiteralPool();
+        void generateERS();
+        void printERS();
     protected:
     private:
         ifstream file;
@@ -72,6 +75,7 @@ class Montador
         vector<struct lt> LT;
         vector<struct eds> EDS;
         vector<struct oc> objectCode;
+        vector<struct st> ERS;
 
         struct mot i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14,
             i15, i16, i17, i18, i19, i20, i21, i22, i23, i24, i25, i26, i27;

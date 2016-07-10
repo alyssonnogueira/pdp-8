@@ -10,8 +10,12 @@ int main()
 {
     Montador m;
 
-    m.assemblerOne("Entrada.txt");
+    m.assemblerOne("Entrada7.txt");
     m.printObjectCode();
+    cout << "\n";
+    m.printEDSTable();
+    cout << "\n";
+    m.printERS();
 
     return 0;
 }

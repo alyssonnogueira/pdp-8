@@ -117,6 +117,8 @@ void Montador::assemblerTwo(string source) {
             LC += this->getAbsoluteAdress(operand);
         }
         else if(opcode == "$") {
+            this->addLiteralPool();
+            this->generateERS();
             this->file.close();
             return;
         }
@@ -125,6 +127,34 @@ void Montador::assemblerTwo(string source) {
             LC++;
         }
   	}
+}
+
+void Montador::printERS() {
+    for(int i = 0; i < this->ERS.size(); i++) {
+        cout << this->ERS[i].symbol << "  " << this->ERS[i].adress << "\n";
+    }
+}
+
+void Montador::generateERS() {
+    for(int i = 0; i < this->ST.size(); i++) {
+        if(this->ST[i].adress != -1) {
+            struct st s;
+            s.symbol = this->ST[i].symbol;
+            s.adress = this->ST[i].adress;
+            this->ERS.push_back(s);
+        }
+    }
+}
+
+void Montador::addLiteralPool() {
+    for(int i = 0; i < this->LT.size(); i++) {
+        struct oc l;
+        l.adress = this->LT[i].adress;
+        l.id = -1;
+        l.opcode = this->getOperandValue(this->LT[i].literal.substr(1, this->LT[i].literal.size() - 2));
+        l.operand = 0;
+        this->objectCode.push_back(l);
+    }
 }
 
 void Montador::printObjectCode() {
@@ -136,34 +166,35 @@ void Montador::printObjectCode() {
     }
 }
 
-void Montador::assembleObjectCode(int m_position, int m_opcode, int m_operand, int id_EDS) {
-    int id = -1;
-
-    if(m_operand == -2) {
-        m_operand = 0;
-        id = id_EDS;
-    }
-
+void Montador::assembleObjectCode(int m_position, int id, int m_opcode, int m_operand) {
     struct oc o;
 
     o.adress = m_position;
     o.id = id;
     o.opcode = m_opcode;
-    o.operand = m_operand;
+
+    if(m_operand == -1) {
+        o.operand = 0;
+    }
+    else {
+        o.operand = m_operand;
+    }
 
     this->objectCode.push_back(o);
 }
 
 void Montador::generatedObjectCode(int m_position, string opcode, string operand) {
-    int m_opcode, m_operand, id_EDS;
+    int m_opcode, m_operand, id;
 
     if(opcode[0] >= 48 && opcode[0] <= 57) {
         m_opcode = this->getOperandValue(opcode);
+        id = -1;
     }
     else {
         for(int i = 0; i < this->MOT.size(); i++) {
             if(this->MOT[i].i_name == opcode) {
                 m_opcode = this->MOT[i].m_code;
+                id = 0;
                 break;
             }
         }
@@ -189,10 +220,9 @@ void Montador::generatedObjectCode(int m_position, string opcode, string operand
                 if(this->ST[i].symbol == operand) {
                     m_operand = this->ST[i].adress;
                     if(m_operand == -1) {
-                        m_operand = -2;
                         for(int i = 0; i < this->EDS.size(); i++) {
                             if(this->EDS[i].symbol == operand) {
-                                id_EDS = this->EDS[i].id;
+                                id = this->EDS[i].id;
                             }
                         }
                     }
@@ -202,7 +232,7 @@ void Montador::generatedObjectCode(int m_position, string opcode, string operand
         }
     }
 
-    this->assembleObjectCode(m_position, m_opcode, m_operand, id_EDS);
+    this->assembleObjectCode(m_position, id, m_opcode, m_operand);
 }
 
 void Montador::printEDSTable() {
@@ -215,7 +245,7 @@ void Montador::generatedEDS() {
     for(int i = 0; i < this->ST.size(); i++) {
         if(this->ST[i].adress == -1) {
             struct eds e;
-            e.id = this->EDS.size();
+            e.id = this->EDS.size() + 1;
             e.symbol = this->ST[i].symbol;
             e.adress = this->ST[i].adress;
             this->EDS.push_back(e);
@@ -243,11 +273,15 @@ void Montador::printSymbolTable() {
 string Montador::getInstruction(ifstream *f) {
     string instruction;
     char ch;
+    bool flag = true;
 
     while(f->get(ch)) {
         if(ch == ';' || ch == '\n') {
             return instruction;
-        }else {
+        }else if(ch == '/'){
+            flag = false;
+        }
+        else if(flag){
             instruction += ch;
         }
     }
