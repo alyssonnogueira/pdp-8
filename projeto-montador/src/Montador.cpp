@@ -138,6 +138,10 @@ vector<struct st> Montador::getERS() {
     return this->ERS;
 }
 
+vector<struct oc> Montador::getObjectCode() {
+    return this->objectCode;
+}
+
 void Montador::printERS() {
     for(int i = 0; i < this->ERS.size(); i++) {
         cout << this->ERS[i].symbol << "  " << this->ERS[i].adress << "\n";

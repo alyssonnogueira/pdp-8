@@ -68,6 +68,7 @@ class Montador
         void printERS();
         vector<struct eds> getEDS();
         vector<struct st> getERS();
+        vector<struct oc> getObjectCode();
     protected:
     private:
         ifstream file;
