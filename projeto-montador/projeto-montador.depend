@@ -1,20 +1,34 @@
 # depslib dependency file v1.0
-1468124592 source:/home/gustavo/Documentos/Arquivos C++/projeto-montador/main.cpp
+1468524219 source:/home/gustavo/Documentos/Arquivos C++/projeto-montador/main.cpp
 	<iostream>
 	"Montador.h"
 	<vector>
 	<string>
 	<map>
 
-1468123427 source:/home/gustavo/Documentos/Arquivos C++/projeto-montador/src/Montador.cpp
+1468524388 source:/home/gustavo/Documentos/Arquivos C++/projeto-montador/src/Montador.cpp
 	"Montador.h"
 	<iostream>
 	<fstream>
 	<string>
 	<string.h>
 	<stdlib.h>
+	<vector>
 
-1468123286 /home/gustavo/Documentos/Arquivos C++/projeto-montador/include/Montador.h
+1468524355 /home/gustavo/Documentos/Arquivos C++/projeto-montador/include/Montador.h
+	<iostream>
+	<string>
+	<vector>
+	<fstream>
+
+1468524219 source:/home/gustavo/Documentos/Git/pdp-8/projeto-montador/main.cpp
+	<iostream>
+	"Montador.h"
+	<vector>
+	<string>
+	<map>
+
+1468525705 /home/gustavo/Documentos/Git/pdp-8/projeto-montador/include/Montador.h
 	<iostream>
 	<string>
 	<vector>
