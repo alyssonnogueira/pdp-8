@@ -1,0 +1,25 @@
+PAGE 0; 
+X, 0
+Y, 0
+Z, 0
+SOMA, 0
+DEFINE_SOMA2_X_Y
+<CLA 
+ TAD A
+ TAD B
+>
+
+DEFINE_SOMA3
+<CLA
+ IOK
+ DCA X
+ IOK
+ DCA Y
+ IOK
+ DCA Z
+ SOMA_2_X, Y
+ TAD Z
+ DCA SOMA> 
+
+SOMA_3
+$

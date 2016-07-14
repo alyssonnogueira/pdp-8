@@ -1,0 +1,66 @@
+    Código de Operação: 
+
+   Operação:  Código:    *Tamanho:   Operandos:          Ação:
+           
+    AND Y        0           1           1          ACC <- ACC ^ Y
+
+    TAD Y        1           1           1          ACC <- ACC + Y
+
+    ISZ Y        2           1           1          Y <- Y + 1 
+                                                    if resultado = 0, PC <- PC + 1
+
+    DCA Y        3           1           1          Y <- ACC, então ACC <- 0
+
+    JMS Y        4           1           1          salta para uma sub-rotina
+                                                    Y <- PC + 1
+                                                    PC <- Y + 1
+                                                    
+    JMP Y        5           1           1          PC <- Y
+
+    CLA          6           1           0          limpa o Acumulador
+
+    CMA          7           1           0          complementa o Acumulador
+
+    RAR          8           1           0          rotaciona o Acumalador para a direita (exemplo abaixo)
+
+                                                    antes do RAR: ACC = 11001111
+                                                    depois do RAR: ACC = 11100111
+
+    RAL          9           1           0          rotaciona o Acumalador para a esquerda
+
+    RTR         10           1           0          rotaciona o Acumalador 2X para a direita
+
+    RTL         11           1           0          rotaciona o Acumalador 2X para a esquerda
+
+    IAC         12           1           0          ACC <- ACC + 1
+
+    NOP         13           1           0          faz nada
+
+    SPA         14           1           0          if ACC > 0, pula a próxima instrução
+
+    SMA         15           1           0          if ACC < 0, pula a próxima instrução
+
+    SNA         16           1           0          if ACC != 0, pula a próxima instrução
+
+    SZA         17           1           0          if ACC = 0, pula a próxima instrução
+
+    SKP         18           1           0          pula a próxima instrução
+
+    OSR         19           1           0          ACC <- ACC v SE (SE é switch register)
+
+    HLT         20           1           0          pára a execução do programa
+
+    IOK         21           1           0          AC <- teclado
+ 
+    OOM         22           1           0          monitor <- AC (essas duas últimas foram criadas)
+
+    JMP I Y     23           1           1          PC <- Y (diferente do JMP comum, o PC não vai apontar para Y e sim para o valor que Y 
+
+armazena)
+
+    
+   *tamanho em words
+
+     
+
+    

@@ -1,0 +1,9 @@
+PAGE 1   //comentario       
+SOMA, 0          //comentario 
+      CLA       //comentario 
+      TAD N1     //comentario 
+      TAD N2     //comentario 
+      DCA R     //comentario 
+      JMPI SOMA //comentario 
+$                //comentario 
+
