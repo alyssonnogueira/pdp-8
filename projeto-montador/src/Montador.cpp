@@ -5,6 +5,7 @@
 #include <string>
 #include <string.h>
 #include <stdlib.h>
+#include <vector>
 
 
 using namespace std;
@@ -127,6 +128,14 @@ void Montador::assemblerTwo(string source) {
             LC++;
         }
   	}
+}
+
+vector<struct eds> Montador::getEDS() {
+    return this->EDS;
+}
+
+vector<struct st> Montador::getERS() {
+    return this->ERS;
 }
 
 void Montador::printERS() {
