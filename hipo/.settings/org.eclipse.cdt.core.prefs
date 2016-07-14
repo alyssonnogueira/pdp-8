@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.exe.debug.903832491/append=true
+environment/project/cdt.managedbuild.config.gnu.exe.debug.903832491/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.exe.debug.903832491/glibconfig.h/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.debug.903832491/glibconfig.h/operation=append
+environment/project/cdt.managedbuild.config.gnu.exe.debug.903832491/glibconfig.h/value=/usr/lib/glib/include/
+environment/project/cdt.managedbuild.config.gnu.exe.release.3584922/append=true
+environment/project/cdt.managedbuild.config.gnu.exe.release.3584922/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.exe.release.3584922/glibconfig.h/delimiter=\:
+environment/project/cdt.managedbuild.config.gnu.exe.release.3584922/glibconfig.h/operation=append
+environment/project/cdt.managedbuild.config.gnu.exe.release.3584922/glibconfig.h/value=/usr/lib/glib/include/

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=CppApplication_2
+PROJECTNAME=Ligador_Carregador
 
 # Active Configuration
 DEFAULTCONF=Debug
