@@ -33,11 +33,12 @@ int Ligador::Linker(list<string> obj) {
     int linhas = 0;
     list<string> objs;
     //Conta as linhas
-    for (int i = 0; obj.size()-1; i++) { 
+    while (obj.size() != 0){
+    //for (int i = 0; obj.size(); i++) { 
     ifstream arq;
         arq.open(obj.front().c_str());
-        //objs.pop_front(obj.front());    
-        //obj.pop_front();
+        objs.push_back(obj.front());    
+        obj.pop_front();
         if (arq) { // Verifica se o ponteiro é válido
             while (arq >> posicao >> instr[0] >> instr[1] >> instr[2]) { // percorre o arquivo caracter a caracter
                 linhas++;
@@ -46,7 +47,7 @@ int Ligador::Linker(list<string> obj) {
         
     }
     
-    LeObj(obj, linhas, linhas);
+    LeObj(objs, linhas, linhas);
     
     /*
     //Usando TSG Busca instr[1] e substitui pelo addr na Tabela de Codigo
@@ -73,11 +74,11 @@ int Ligador::LeObj(list<string> obj, int TCodigo, int Ttsg) {
     Codigo.resize(TCodigo, vector<int>(4, -1));
     TSG.resize(Ttsg, vector<int>(3, -1));
     cout << "Lendo Objs" << endl;
+    int i = 0;
     while (obj.size() != 0) {
         ifstream arq;
         arq.open(obj.front().c_str());
         obj.pop_front();
-        int i = 0;
         if (arq) { // Verifica se o ponteiro é válido
             int addr = 0;
             while (arq >> posicao >> instr[0] >> instr[1] >> instr[2]) { // percorre o arquivo caracter a caracter
