@@ -21,7 +21,7 @@ void Simulador::processaCodigo(vector < vector<int> > matrizComandos)
     int PC,EXEC,OP,OPER,ACC,Y,X,REGPC;
 //INICIA NA PRIMEIRA LINHA DA MATRIZ DE COMANDOS
     PC=0;
-
+    ACC=0;
     while(OP!=20)
     {
         getchar();
@@ -33,10 +33,12 @@ void Simulador::processaCodigo(vector < vector<int> > matrizComandos)
         {
             cout<< PC << " " << matrizComandos[PC][1] << " " << matrizComandos[PC][2] << " " << matrizComandos[PC][3]<< endl;
 
+
             switch(OP)
             {
             case 0://AND Y (ACC <- ACC ^ Y)
-                ACC=ACC&matrizComandos[OPER][2];
+                Y=matrizComandos[PC][3];
+                ACC=ACC&matrizComandos[Y][2];
                 PC++;
                 break;
 
@@ -163,6 +165,7 @@ void Simulador::processaCodigo(vector < vector<int> > matrizComandos)
                 PC=matrizComandos[REGPC][2];
                 break;
             }
+        cout<< "ACC: "<< ACC<<endl;
         }else{
         PC++;
         }
