@@ -27,13 +27,14 @@ int main(){
     macro.passOne();
     macro.passTwo();
     macro.saidaTeste();
+    macro.expansaoFinal();
     
     // Impressão utilizada apenas para debug
     // ========================================
     //cout << "SAIDA DA LISTA DO PROCESSADOR DE MACROS" << endl << endl;
   	//macro.imprimeEntrada();
 
-    cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
+    /*cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
     macro.imprimeSaida();
     cout << endl;
     cout << " =========== Valor contido na Macro ============" << endl;
@@ -44,7 +45,7 @@ int main(){
     macro.imprimeNomes();
     cout << endl;
   	// ========================================
-    
+    */
   	entrada.close(); // Fecha o arquivo
     
 	return 0;

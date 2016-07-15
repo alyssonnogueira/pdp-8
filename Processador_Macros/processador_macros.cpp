@@ -15,7 +15,7 @@ int Processador_macros::lerEntrada(ifstream *arq){ // Realiza a leitura do arqui
   string retorno;
   if(arq){  // Verifica se o ponteiro é válido
     while(arq->get(ch)){ // percorre o arquivo caracter a caracter
-      if(ch == '_' || ch == '\n' || ch == '<' || ch == '>' || ch == ' ' || ch == ',' || ch == ';'){ // verifica se o caracter encontrado é um ; ou \n
+      if(ch == '_' || ch == '\n' || ch == '<' || ch == '>' || ch == ' '){ // verifica se o caracter encontrado é um ; ou \n
         switch(ch){
           case '<':
             push(retorno);
@@ -48,8 +48,14 @@ void Processador_macros::passTwo(){
     for(int j=0; j < nomes.size(); j++){
       if(saida[i]==nomes[j]){
         troca(i+1,j+1);
+        aux=j+1;
+        aux2=i+1;
+        while(nomes[aux]!= "" && aux2 != saida.size()){
+          saida[aux2].erase();
+          aux++;
+          aux2++;
+        }
       }
-      
     }
   } 
 }
@@ -58,12 +64,12 @@ void Processador_macros::troca(int i, int j){
   for(int k=j; k<nomes.size(); k++){
     for(int t=0; t < macro.size(); t++){
       if(macro[t]==nomes[k] && macro[t]!= ""){
-          macro[t]=saida[i];
+        macro[t]=saida[i];
       }
     }
     if(i < saida.size()-1){
-        i++;
-      }
+      i++;
+    }
   }
 }
 
@@ -96,12 +102,32 @@ void Processador_macros::passOne(){
 void Processador_macros::saidaTeste(){
   int t=0;
   for(int i=0; i < saida.size(); i++){
-    for(int j=0; j < macro.size(); j++){
-      if(saida[i]==macro[j]){
-        t=1;
+    for(int j=0; j < nomes.size(); j++){
+      if(saida[i]==nomes[j]){
+       saida[i].erase();
+       for(int k = j; k < macro.size();k++){
+          if(macro[k]==">")
+            t=0;
+          if(t==1){
+            saida.push_back(macro[k]);
+          }
+          if(macro[k]=="<"){
+            t=1;
+          }
+       }
+       return;
       }
     }
   } 
+}
+
+void Processador_macros::expansaoFinal(){
+  outFile.open("saida.txt");
+  for(int i=0; i < saida.size(); i++){
+    if(saida[i]!=""){
+      outFile << saida[i] << " ";
+    }
+  }
 }
 
 void Processador_macros::push(string valor){ // Adiciona uma string ao final da entrada

@@ -39,18 +39,14 @@ class Processador_macros{
 
 		void saidaTeste();
 
-		void getMacro(ifstream *arq);
+		void expansaoFinal();
 
 
 	protected:
 		vector<string> saida;
 		vector<string> entrada;
 		vector<string> macro;				// Cria a macro com a macro
-		vector<string> expansao;			// Cria a macro da macro expandida
 		vector<string> nomes;
-		vector<string> chamada;
-		vector<string> variaveis;
 		ofstream outFile;
-		//list<string>::iterator ptr;  // cria um iterador de float
 };
 #endif
