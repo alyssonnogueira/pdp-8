@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="teste" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/teste" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/teste" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`pkg-config gtkmm-3.0 –cflags`" />
+		</Compiler>
+		<Linker>
+			<Add option="`pkg-config gtk+-2.0 --libs`" />
+		</Linker>
+		<Unit filename="../hipo/src/Refresh.cpp" />
+		<Unit filename="../hipo/src/Refresh.h" />
+		<Unit filename="../hipo/src/hipo.cpp" />
+		<Unit filename="../hipo/src/inst_hipo.txt" />
+		<Unit filename="../hipo/src/interfaces.cpp" />
+		<Unit filename="../hipo/src/interfaces.h" />
+		<Unit filename="../hipo/src/interpretador.cpp" />
+		<Unit filename="../hipo/src/interpretador.h" />
+		<Unit filename="../hipo/src/lexico.cpp" />
+		<Unit filename="../hipo/src/lexico.h" />
+		<Unit filename="../hipo/src/step.cpp" />
+		<Unit filename="../hipo/src/step.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

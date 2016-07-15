@@ -15,41 +15,27 @@ using namespace std;
 
 int main() {
     Ligador ligador;
-    Carregador carregador; // Analisador lexico
-    Processador_macros macro; // Analisador lexico
+    Carregador *carregador; 
+    Processador_macros macro;
 
     //------------------------------------MACRO------------------------------------
-    // Cria ponteiro e abre o arquivo de entrada
-    ifstream entrada1;
-    entrada1.open("entrada_teste.txt");
+    	// Cria ponteiro e abre o arquivo de entrada
+	ifstream entrada1;
+	entrada1.open("entrada_teste.txt");
+ 	
+    if (!entrada1){
+     		cout << "Não foi possível abrir o arquivo!" << endl;
+     		return 0;
+  	}
 
-    if (!entrada1) {
-        cout << "Não foi possível abrir o arquivo!" << endl;
-        //return 0;
-    }
-
-    if (!macro.lerEntrada(&entrada1)) { // Le o arquivo de entrada e adiciona ao analisador lexico os tokens separados
-        cout << "Não foi possivel ler o arquivo! " << endl;
-    }
-
+  	if(!macro.lerEntrada(&entrada1)){ // Le o arquivo de entrada e adiciona ao analisador lexico os tokens separados
+  		  cout << "Não foi possivel ler o arquivo! " << endl;
+  	}
+   
     macro.passOne();
     macro.passTwo();
-
-    // Impressão utilizada apenas para debug
-    // ========================================
-    cout << "SAIDA DA LISTA DO PROCESSADOR DE MACROS" << endl << endl;
-    macro.imprimeEntrada();
-
-    cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
-    macro.imprimeSaida();
-    cout << endl;
-    cout << " =========== Valor contido na Macro ============" << endl;
-    macro.imprimeMacro();
-    cout << endl;
-    cout << "============== Nomes das macros =================" << endl;
-    cout << endl;
-    macro.imprimeNomes();
-    cout << endl;
+    macro.saidaFinal();
+    macro.expansaoFinal();
     // ========================================
 
     entrada1.close(); // Fecha o arquivo
@@ -64,15 +50,12 @@ int main() {
     cout << "\n";
     m.printERS();
 
-    vector<struct eds> eds = m.getEDS();
-    //std::copy( m.getEDS().begin(), m.getEDS().end(), std::back_inserter( eds ) );
-    list<struct st> ers; 
-    //std::copy( m.getERS().begin(), m.getERS().end(), std::back_inserter( ers ) );
+//    vector<struct eds> eds = m.getEDS();
+//    list<struct st> ers; 
     vector<struct oc> obj = m.getObjectCode();
     //std::copy( m.getObjectCode().begin(), m.getObjectCode().end(), std::back_inserter( obj ) );
     int i = 0;
     
-    cout << "novos" << endl;
     list<string> lobj;
     ofstream saida;
     string objn = "objeto.o";
@@ -98,6 +81,7 @@ int main() {
     ligador.Linker(lobj, m.getERS(), m.getEDS());
 
     //------------------------------------Carregador------------------------------------
+    carregador = new Carregador(ligador.getlinhas());
     // Cria ponteiro e abre o arquivo de entrada
     ifstream entrada0;
     entrada0.open("programa.pdp"); //, ios_base::in
@@ -106,7 +90,7 @@ int main() {
         return 0;
     }
 
-    if (!carregador.lerEntrada(&entrada0)) { // Le o arquivo de entrada e adiciona ao analisador lexico os tokens separados
+    if (!carregador->lerEntrada(&entrada0)) { // Le o arquivo de entrada e adiciona ao analisador lexico os tokens separados
         cout << "Não foi possivel ler o arquivo! " << endl;
     }
 

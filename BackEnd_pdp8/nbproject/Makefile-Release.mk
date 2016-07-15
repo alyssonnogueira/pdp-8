@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Carregador.o \
 	${OBJECTDIR}/Ligador.o \
 	${OBJECTDIR}/Montador.o \
+	${OBJECTDIR}/Processador_macros.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/simulador.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/Montador.o: Montador.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Montador.o Montador.cpp
+
+${OBJECTDIR}/Processador_macros.o: Processador_macros.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Processador_macros.o Processador_macros.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
