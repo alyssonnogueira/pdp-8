@@ -8,6 +8,7 @@
 #include <time.h>
 #include <gtkmm/messagedialog.h>
 #include <vector>
+#include <gtkmm.h>
 // Inclui os Headers
 //#include "step.h"
 //#include "lexico.h"
@@ -26,7 +27,7 @@ using namespace std;
   mButtonBox(Gtk::ORIENTATION_HORIZONTAL)
 */
 
-Interfaces::Interfaces(){
+Interfaces::Interfaces(Glib::RefPtr<Gtk::Builder>& refBuilder){
 
 /*
   // Set title and border of the window
@@ -88,7 +89,7 @@ Interfaces::Interfaces(){
     }
     */
   // Show all children of the window
-  show_all_children();
+  //show_all_children();
 }
 
 Interfaces::~Interfaces()
