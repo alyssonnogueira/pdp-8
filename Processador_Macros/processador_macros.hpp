@@ -37,7 +37,7 @@ class Processador_macros{
 
 		void troca(int i, int j);
 
-		void saidaTeste();
+		void saidaFinal();
 
 		void expansaoFinal();
 

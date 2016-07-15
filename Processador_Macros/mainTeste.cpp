@@ -26,15 +26,15 @@ int main(){
    
     macro.passOne();
     macro.passTwo();
-    macro.saidaTeste();
+    macro.saidaFinal();
     macro.expansaoFinal();
     
     // Impressão utilizada apenas para debug
     // ========================================
     //cout << "SAIDA DA LISTA DO PROCESSADOR DE MACROS" << endl << endl;
-  	//macro.imprimeEntrada();
+    /*macro.imprimeEntrada();
 
-    /*cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
+    cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
     macro.imprimeSaida();
     cout << endl;
     cout << " =========== Valor contido na Macro ============" << endl;

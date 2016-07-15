@@ -25,6 +25,11 @@ int Processador_macros::lerEntrada(ifstream *arq){ // Realiza a leitura do arqui
             push(retorno);
             push(">");
             break;
+          case '_':
+            if(retorno != "")
+                push(retorno);
+            push("_");
+            break;
           default:
             if(retorno != "")
                 push(retorno);
@@ -42,19 +47,10 @@ int Processador_macros::lerEntrada(ifstream *arq){ // Realiza a leitura do arqui
 }
 
 void Processador_macros::passTwo(){
-  int aux;
-  int aux2;
   for(int i=0; i < saida.size(); i++){
     for(int j=0; j < nomes.size(); j++){
-      if(saida[i]==nomes[j]){
+      if(saida[i]==nomes[j] && saida[i+1] == "_"){
         troca(i+1,j+1);
-        aux=j+1;
-        aux2=i+1;
-        while(nomes[aux]!= "" && aux2 != saida.size()){
-          saida[aux2].erase();
-          aux++;
-          aux2++;
-        }
       }
     }
   } 
@@ -82,7 +78,6 @@ void Processador_macros::passOne(){
           nomes.push_back(entrada[t]);
           t++;
         }
-        nomes.push_back("_");
         for(int j = i; entrada[j] != ">"; j++){
           macro.push_back(entrada[j]);
           entrada[j].erase();
@@ -93,13 +88,13 @@ void Processador_macros::passOne(){
       }   
     }
     for(int i = 0; i < entrada.size(); i++){
-      if(entrada[i] != ""){
+      if(entrada[i] != " "){
         saida.push_back(entrada[i]);
       }
     }
 }
 
-void Processador_macros::saidaTeste(){
+void Processador_macros::saidaFinal(){
   int t=0;
   for(int i=0; i < saida.size(); i++){
     for(int j=0; j < nomes.size(); j++){
@@ -107,6 +102,8 @@ void Processador_macros::saidaTeste(){
        saida[i].erase();
        for(int k = j; k < macro.size();k++){
           if(macro[k]==">")
+            t=0;
+          if(macro[k]== "_")
             t=0;
           if(t==1){
             saida.push_back(macro[k]);
@@ -122,9 +119,18 @@ void Processador_macros::saidaTeste(){
 }
 
 void Processador_macros::expansaoFinal(){
+  int j=0;
   outFile.open("saida.txt");
+  for(int i = 0; i < saida.size(); i++){
+      if(saida[i] == "_"){
+        saida[i-1].erase();
+        while(saida[i] != ";"){
+          saida[i++].erase();
+        }
+      }
+    }
   for(int i=0; i < saida.size(); i++){
-    if(saida[i]!=""){
+    if(saida[i]!= " " && saida[i]!="" && saida[i]!=";"){
       outFile << saida[i] << " ";
     }
   }
