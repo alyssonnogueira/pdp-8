@@ -26,11 +26,12 @@ int main(){
    
     macro.passOne();
     macro.passTwo();
+    macro.saidaTeste();
     
     // Impressão utilizada apenas para debug
     // ========================================
-    cout << "SAIDA DA LISTA DO PROCESSADOR DE MACROS" << endl << endl;
-  	macro.imprimeEntrada();
+    //cout << "SAIDA DA LISTA DO PROCESSADOR DE MACROS" << endl << endl;
+  	//macro.imprimeEntrada();
 
     cout << "============= SAIDA SEM DEFINICAO ===============" << endl;
     macro.imprimeSaida();

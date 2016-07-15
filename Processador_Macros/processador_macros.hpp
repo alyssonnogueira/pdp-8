@@ -33,7 +33,11 @@ class Processador_macros{
 
 		void passOne();		// Passa primeira vez pela macro
 
-		void passTwo();
+		void passTwo();		// Passa segunda vez pela macro
+
+		void troca(int i, int j);
+
+		void saidaTeste();
 
 		void getMacro(ifstream *arq);
 
@@ -45,6 +49,7 @@ class Processador_macros{
 		vector<string> expansao;			// Cria a macro da macro expandida
 		vector<string> nomes;
 		vector<string> chamada;
+		vector<string> variaveis;
 		ofstream outFile;
 		//list<string>::iterator ptr;  // cria um iterador de float
 };

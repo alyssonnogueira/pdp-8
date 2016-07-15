@@ -10,10 +10,6 @@ using namespace std;
 
 Processador_macros::Processador_macros(){ } // Construtor default da classe
 
-/*list<string> Lexico::getList(){ // Get para pegar a entrada
-  return entrada;
-}*/
-
 int Processador_macros::lerEntrada(ifstream *arq){ // Realiza a leitura do arquivo de entrada separando os tokens em cada posição da entrada
   char ch;
   string retorno;
@@ -46,23 +42,41 @@ int Processador_macros::lerEntrada(ifstream *arq){ // Realiza a leitura do arqui
 }
 
 void Processador_macros::passTwo(){
-  char ch;
-  string retorno;
+  int aux;
+  int aux2;
   for(int i=0; i < saida.size(); i++){
     for(int j=0; j < nomes.size(); j++){
       if(saida[i]==nomes[j]){
-        cout << "Encontrou uma chamada" << endl;
+        troca(i+1,j+1);
+      }
+      
+    }
+  } 
+}
+
+void Processador_macros::troca(int i, int j){
+  for(int k=j; k<nomes.size(); k++){
+    for(int t=0; t < macro.size(); t++){
+      if(macro[t]==nomes[k] && macro[t]!= ""){
+          macro[t]=saida[i];
       }
     }
+    if(i < saida.size()-1){
+        i++;
+      }
   }
-  
 }
 
 void Processador_macros::passOne(){
     int t=0;
     for(int i = 0; i < entrada.size(); i++){
       if(entrada[i] == "DEFINE"){
-        nomes.push_back(entrada[i+1]);
+        t=i+1;
+        while(entrada[t] != "<"){
+          nomes.push_back(entrada[t]);
+          t++;
+        }
+        nomes.push_back("_");
         for(int j = i; entrada[j] != ">"; j++){
           macro.push_back(entrada[j]);
           entrada[j].erase();
@@ -77,6 +91,17 @@ void Processador_macros::passOne(){
         saida.push_back(entrada[i]);
       }
     }
+}
+
+void Processador_macros::saidaTeste(){
+  int t=0;
+  for(int i=0; i < saida.size(); i++){
+    for(int j=0; j < macro.size(); j++){
+      if(saida[i]==macro[j]){
+        t=1;
+      }
+    }
+  } 
 }
 
 void Processador_macros::push(string valor){ // Adiciona uma string ao final da entrada
