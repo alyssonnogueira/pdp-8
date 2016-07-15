@@ -20,6 +20,7 @@
 #include <list>
 #include <stdio.h>
 #include <vector>
+#include "Montador.h"
 
 using namespace std;
 
@@ -29,13 +30,13 @@ public:
     Ligador(const Ligador& orig);
     virtual ~Ligador();
     //A implementar.
-    int Linker(list<string> obj);
+    int Linker(list<string> obj, vector<struct st> ERS, vector<struct eds> EDS);
     int LeObj(list<string> obj, int TCodigo, int Ttsg);
     int geraExec();
 private:
 protected:
-    vector <vector<int> > TSG; //Tabela de simbolos globais
-    //vector <vector<int> > TU; //Tabela de Uso
+    vector <vector<int> > SDE; //Tabela de simbolos globais
+    vector <vector<int> > SRE; //Tabela de Uso
     vector <vector<int> > Codigo; //Tabela com o codigo
     list<string> lista; // Cria a lista léxica
     std::list<string>::iterator ptr; // cria um iterador de float

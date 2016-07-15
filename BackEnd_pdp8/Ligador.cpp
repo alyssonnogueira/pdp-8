@@ -18,6 +18,7 @@
 #include <list>
 #include <stdio.h>
 #include <vector>
+#include "Montador.h"
 
 using namespace std;
 
@@ -27,14 +28,13 @@ Ligador::Ligador() {
 Ligador::Ligador(const Ligador& orig) {
 }
 
-int Ligador::Linker(list<string> obj) {
+int Ligador::Linker(list<string> obj, vector<struct st> ERS, vector<struct eds> EDS) {
     int posicao;
     int instr[3];
     int linhas = 0;
     list<string> objs;
     //Conta as linhas
     while (obj.size() != 0){
-    //for (int i = 0; obj.size(); i++) { 
     ifstream arq;
         arq.open(obj.front().c_str());
         objs.push_back(obj.front());    
@@ -49,19 +49,22 @@ int Ligador::Linker(list<string> obj) {
     
     LeObj(objs, linhas, linhas);
     
-    /*
-    //Usando TSG Busca instr[1] e substitui pelo addr na Tabela de Codigo
-    while (TSG.size() != 0) {
-        vector<int> linha = TSG[TSG.size()-1]; 
-        TSG.pop_back();
-        linha[0];
-        for (int i = 0; i < Codigo.size()-1; i++){
-            if (Codigo[i][2] == linha[0]){
-                Codigo[i][2] == linha[1];
+    for (int i = 0; i < EDS.size(); i++){
+        if (EDS[i].adress == -1){
+            for (int j = 0; j < ERS.size(); i++){
+                if (ERS[j].symbol == EDS[i].symbol){
+                    EDS[i].adress = ERS[j].adress;
+                    for (int x = 0; x < Codigo.size(); x++){
+                        if (Codigo[x][1] == EDS[i].id){
+                            Codigo[x][3] = EDS[i].adress;
+                        }
+                    }
+                }
             }
         }
-     */           
-    //}    
+    }
+    
+    
     //Gera o executavel .pdp
     geraExec();
     return 0;
@@ -72,7 +75,7 @@ int Ligador::LeObj(list<string> obj, int TCodigo, int Ttsg) {
     int posicao;
     int instr[3];
     Codigo.resize(TCodigo, vector<int>(4, -1));
-    TSG.resize(Ttsg, vector<int>(3, -1));
+    //TSG.resize(Ttsg, vector<int>(3, -1));
     cout << "Lendo Objs" << endl;
     int i = 0;
     while (obj.size() != 0) {
@@ -96,11 +99,11 @@ int Ligador::LeObj(list<string> obj, int TCodigo, int Ttsg) {
                     addr++;
                     Codigo[i][3] = instr[2];
                     addr++;
-                    if (instr[0] != -1) {
+                  /*  if (instr[0] != -1) {
                         TSG.at(0).push_back(instr[1]);
                         TSG.at(1).push_back(addr);
                         TSG.at(2).push_back(1); //1 indica + e -1 indica -
-                    }
+                    }*/
                 } else {
                     cout << "Impossível proseguir, não há mais memória!" << endl;
                 }

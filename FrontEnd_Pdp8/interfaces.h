@@ -35,10 +35,11 @@
 
 using namespace std;
 
-class Interfaces : public Gtk::Window
-{
+//: public Gtk::Window
+
+class Interfaces {
 public:
-	Interfaces();
+	Interfaces(Glib::RefPtr<Gtk::Builder>& refBuilder);
 
   virtual ~Interfaces();
   ifstream entrada;
