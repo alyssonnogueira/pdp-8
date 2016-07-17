@@ -93,15 +93,15 @@ void Interfaces::on_cl_clicked(){
 }
 
 void Interfaces::on_co_clicked(){
-  std::cout << "The Button was clicked: state="
-  << (start_co->get_active() ? "true" : "false")
-  << std::endl;
+  //std::cout << "The Button was clicked: state="
+  //<< (start_co->get_active() ? "true" : "false")
+  //<< std::endl;
   if ((start_co->get_active()) && (start_cl->get_active())){
     //------------------------------------SIMULADOR------------------------------------
     start_simulador();
   }
   else {
-    cout << "CL não está ativado" << endl; 
+    //cout << "CL não está ativado" << endl; 
   }
   start_co->set_active(false);
 }
@@ -132,7 +132,7 @@ int Interfaces::start_processador(){
 
 int Interfaces::start_montador(){
   m = new Montador();
-  m->assemblerOne("Entrada7.txt");
+  m->assemblerOne("saida2.txt");
   m->printObjectCode();
   cout << "\n";
   m->printEDSTable();
@@ -148,8 +148,8 @@ int Interfaces::start_montador(){
 
   for (int i = 0; i < obj.size(); i++) {
     oc octable = obj[i];
-    saida << octable.adress << " " << octable.adress << " " << octable.opcode << " " << octable.operand << endl;
-    i++;
+    saida << octable.adress << " " << octable.id << " " << octable.opcode << " " << octable.operand << endl;
+    cout  << octable.adress << " " << octable.id << " " << octable.opcode << " " << octable.operand << endl;
       //obj.pop_front();
   }
   lobj.push_back(objn);
@@ -187,8 +187,8 @@ int Interfaces::start_simulador(){
   simulador = new Simulador();
   vector <vector<int> > interpretador; // Vector inteiro que armazena intruções e endereços como inteiros
 
-  interpretador.resize(500); // Cria 100 posição no vetor
-  for (int i = 0; i < 500; ++i)
+  interpretador.resize(ligador->getlinhas()); // Cria 100 posição no vetor
+  for (int i = 0; i < ligador->getlinhas(); ++i)
       interpretador[i].resize(4); // Gera uma matriz 100 x 2
 
   // Cria ponteiro e abre o arquivo de entrada
@@ -211,7 +211,7 @@ int Interfaces::start_simulador(){
           if (ch == ';' || ch == '\n') // verifica se o caracter encontrado é um ; ou \n
           {
               lista.push_back(PC); // adiciona a string a ultima posicao da lista
-              cout << endl << "STRING " << PC << endl;
+              //cout << endl << "STRING " << PC << endl;
               PC = "";
             } else {
               PC += ch; // Gera a string até achar um ; ou \n
@@ -245,9 +245,9 @@ int Interfaces::start_simulador(){
           interpretador[intPC][1] = EXEC;
           interpretador[intPC][2] = OP;
           interpretador[intPC][3] = OPER;
-          cout << interpretador[intPC][0] << " " << interpretador[intPC][1] << " " << interpretador[intPC][2] << " " << interpretador[intPC][3] << endl;
+          //cout << interpretador[intPC][0] << " " << interpretador[intPC][1] << " " << interpretador[intPC][2] << " " << interpretador[intPC][3] << endl;
         }
-        cout << "INICIANDO PROGRAMA, PRESSIONE ENTER" << endl;
+        cout << "PRESSIONE CO" << endl;
         simulador->processaCodigo(interpretador);
   entrada.close(); // Fecha o arquivo
   return 0;

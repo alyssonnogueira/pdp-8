@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include "Processador_macros.h"
+#include "Montador.h"
 
 using namespace std;
 
@@ -120,7 +121,7 @@ void Processador_macros::saidaFinal(){
 
 void Processador_macros::expansaoFinal(){
   int j=0;
-  outFile.open("saida.txt");
+  outFile.open("saida2.txt");
   for(int i = 0; i < saida.size(); i++){
       if(saida[i] == "_"){
         saida[i-1].erase();
@@ -129,13 +130,32 @@ void Processador_macros::expansaoFinal(){
         }
       }
     }
+  Montador *m = new Montador();
+  int flag;
   for(int i=0; i < saida.size(); i++){
+    flag = 1;
     if((saida[i]!= " ") && (saida[i]!="") && (saida[i]!=";")){
-      outFile << saida[i] << endl;
-      cout << saida[i] << endl;
-    
+      for (int j =0; j < m->MOT.size(); j++){
+        if (m->MOT[j].i_name == saida[i]){
+          if (m->MOT[j].n_operands == 0){
+            outFile << saida[i] << endl;
+            flag = 0;
+          } else {
+            outFile << saida[i] << " " << saida[i+1]<< endl;
+            i++;
+            flag = 0;
+          }
+        } 
+      }
+      if (flag == 1){
+          outFile << saida[i] << " " << saida[i+1]<< endl;
+            i++;
+      }
+//      outFile << saida[i] << endl;
+//      cout << saida[i] << endl;
     }
   }
+  outFile << "$" << endl;
 }
 
 void Processador_macros::push(string valor){ // Adiciona uma string ao final da entrada

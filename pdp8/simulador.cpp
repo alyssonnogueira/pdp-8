@@ -18,16 +18,18 @@ void Simulador::processaCodigo(vector < vector<int> > matrizComandos)
 {
 
     static int PC = 0;
-    int EXEC,OP,OPER,ACC,Y,X,REGPC;
+    static int ACC = 0;
+    int EXEC,OP,OPER,Y,X,REGPC;
 //INICIA NA PRIMEIRA LINHA DA MATRIZ DE COMANDOS
     //PC=0;
-    ACC=0;
-    if(OP!=20)
-    {
-        //getchar();
+    //ACC=0;
         EXEC=matrizComandos[PC][1];
         OP=matrizComandos[PC][2];
         OPER=matrizComandos[PC][3];
+
+    if(OP!=20)
+    {
+        //getchar();
 
         if(EXEC!=-1)
         {

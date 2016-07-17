@@ -47,8 +47,9 @@ int Ligador::Linker(list<string> obj, vector<struct st> ERS, vector<struct eds> 
             while (arq >> posicao >> instr[0] >> instr[1] >> instr[2]) { // percorre o arquivo caracter a caracter
                 linhas++;
             }
+            linhas++;
         }
-        
+        //linhas = posicao;
     }
     
     LeObj(objs, linhas, linhas);
@@ -68,7 +69,6 @@ int Ligador::Linker(list<string> obj, vector<struct st> ERS, vector<struct eds> 
             }
         }
     }
-    
     
     //Gera o executavel .pdp
     geraExec();
@@ -91,17 +91,17 @@ int Ligador::LeObj(list<string> obj, int TCodigo, int Ttsg) {
             int addr = 0;
             while (arq >> posicao >> instr[0] >> instr[1] >> instr[2]) { // percorre o arquivo caracter a caracter
                 cout << posicao << " " << instr[0] << " " << instr[1] << " " << instr[2] << endl;
-                if (posicao > 1) {
+                //if (posicao > 1) {
                     //TSG.resize(posicao, vector<int>(4, -1));
                     //TU.resize(posicao, vector<int>(3, -1));
-                }
-                if (i < Codigo.size()) {
+                //}
+                if (i <= Codigo.size()) {
                     Codigo[i][0] = posicao;
-                    addr++;
+                    //addr++;
                     Codigo[i][1] = instr[0];
-                    addr++;
+                    //addr++;
                     Codigo[i][2] = instr[1];
-                    addr++;
+                    //addr++;
                     Codigo[i][3] = instr[2];
                     addr++;
                   /*  if (instr[0] != -1) {

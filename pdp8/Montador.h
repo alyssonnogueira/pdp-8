@@ -69,12 +69,13 @@ class Montador
         vector<struct eds> getEDS();
         vector<struct st> getERS();
         vector<struct oc> getObjectCode();
+        vector<struct mot> MOT; // tabela de instruções de máquina
     protected:
     private:
         ifstream file;
 
         vector<string> POT; // tabela de pseudo-instruções
-        vector<struct mot> MOT; // tabela de instruções de máquina
+        //vector<struct mot> MOT; // tabela de instruções de máquina
         vector<struct st> ST; // tabela de simbolos
         vector<struct lt> LT; // tabela de literais
         vector<struct eds> EDS; // tabela de simbolos definidos externamente
